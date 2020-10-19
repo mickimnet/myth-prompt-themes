@@ -413,7 +413,7 @@ format = '[[ ](bg:#464347 fg:#5836CD)$symbol\($workspace\)[](bg:#464347 fg
 # format = "[[ ](bg:#464347 fg:#5836CD)$symbol$version($workspace)[](bg:#464347 fg:#5836CD)]($style)"
 
 [time]
-disabled = false
+# disabled = false
 ### color is set to orange, because of the configured time_range--to get your attention for e. g. R&R time ;)
 style = "bg:#FFA200 fg:#111111"
 use_12hr = false

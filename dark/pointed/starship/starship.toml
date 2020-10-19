@@ -420,7 +420,7 @@ use_12hr = false
 time_format = "%H:%M"
 utc_time_offset = "local"
 time_range = "20:00:00-06:00:00"
-format = "[ $time[](bg:#464347 fg:#FFA200)]($style)"
+format = "[[](bg:#FFA200 fg:#464347) $time[](bg:#464347 fg:#FFA200)]($style)"
 
 [username]
 # disabled = true

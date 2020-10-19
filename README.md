@@ -26,6 +26,7 @@ You need [Starship][starship] in order to use those.
 ## Todo ##
 
 * Include description for following:
+    - coloring is based on the CI of the languages/services/tools
     - disabled => uncomment to change the default config
     - activate linebreak
     - setup _right prompt_ in [Fish Shell][fish]
