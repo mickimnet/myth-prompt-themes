@@ -1,5 +1,5 @@
 # Myth Dark Slanted config for Starship
-# (c) 2020 by Mick Hohmann, last changed 2020-10-18 22:39
+# (c) 2020 by Mick Hohmann, last changed 2020-10-19 21:48
 
 # Don't print a new line at the start of the prompt
 add_newline = false

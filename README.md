@@ -1,6 +1,6 @@
 # M.y.t.h.: prompt themes #
 
-> "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][mi]"
+> "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][mi])
 
 [![licence badge]][licence] [![stars badge]][stargazer] [![issues badge]][issues]
 <!-- [![donation badge]][donate] -->
@@ -26,7 +26,7 @@ You need [Starship][starship] in order to use those.
 ## Todo ##
 
 * Include description for following:
-    - disabled => uncomment to disable (different values reflect the opposite of the default)
+    - disabled => uncomment to change the default config
     - activate linebreak
     - setup _right prompt_ in [Fish Shell][fish]
     - setting of the `time` module
