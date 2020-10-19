@@ -258,7 +258,7 @@ format = "[[ ](bg:#565257 fg:#0F1689)$symbol$version[](bg:#565257 fg:#0F16
 [hostname]
 # disabled = true
 style = "bg:#AFD700 fg:#111111"
-ssh_only = false
+# ssh_only = false
 trim_at = "."
 format = "[[ ](bg:#565257 fg:#AFD700)($style)$hostname[](bg:#565257 fg:#AFD700)]($style)"
 
@@ -423,7 +423,7 @@ format = "[ $time[](bg:#565257 fg:#FFA200)]($style)"
 
 [username]
 # disabled = true
-show_always = true
+# show_always = true
 style_root = "bold bg:#3388FF fg:#FF3322"
 style_user = "bg:#3388FF fg:#EEEEEE"
 format = "[[ ](bg:#565257 fg:#3388FF)$user[](bg:#565257 fg:#3388FF)]($style)"
