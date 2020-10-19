@@ -23,13 +23,32 @@ You need [Starship][starship] in order to use those.
 
 ![M.y.t.h. Dark Slanted:](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-slanted-starship.png)
 
+## Todo ##
+
+* Include description for following:
+    - disabled => uncomment to disable (different values reflect the opposite of the default)
+    - activate linebreak
+    - setup _right prompt_ in [Fish Shell][fish]
+    - setting of the `time` module
+* Include the used font of the preview pictures in the Introduction
+* [Starship][starship] config: set a good symbol for `vicmd`
+
 ## Update history ##
 
-### Version 0.1 ###
+### Version 0.2: 2020-10-19 ###
+
+* for the [Starship][starship] version:
+    - redid the preview images, for smaller size and better overview
+    - finalized the `dark/pointed` variant
+    - updated the background of the `dark/slanted` variant
+    - changed the display of the `cmd_duration`, `jobs`, `shlvl` and the `status` module
+    - changed the symbol of the `deleted` status in the `git_status` module
+    - changed the symbol of the
+
+### Version 0.1: 2020-10-19 ###
 
 * just configurations for [Starship][starship]
 * the MVP ;)
-
 
 ## Thanks ##
 
@@ -52,5 +71,7 @@ Very big thanks goes out to [@elseym][siwa] for his invaluable support and feedb
 [issues]: https://img.shields.io/github/issues/micck/myth-prompt-themes
 [paypal badge]: https://img.shields.io/badge/paypal-donate-ff69b4.svg?style=flat
 [donate]: https://ZZZ.not.yet.known/
+
+[fish]: https://fishshell.com
 
 [siwa]: https://github.com/elseym
