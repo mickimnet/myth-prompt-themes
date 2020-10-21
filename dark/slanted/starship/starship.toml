@@ -384,7 +384,7 @@ format = "[[ ](bg:#464347 fg:#A72145)$symbol$version[](bg:#464347 fg:#A721
 symbol = ""
 style = "bold bg:#464347 fg:#FBDE2D"
 # threshold = 2
-format = "[ $symbol$shlvl]($style)"
+format = "[$symbol$shlvl]($style)"
 
 [singularity]
 # disabled = true
@@ -402,7 +402,7 @@ format = "[[ ](bg:#464347 fg:#F05138)$symbol$version[](bg:#464347 fg:#F051
 # disabled = false
 symbol = ""
 style = "bg:#464347 fg:#ff3322"
-format = "[ $symbol$status]($style)"
+format = "[$symbol$status]($style)"
 
 [terraform]
 disabled = false
