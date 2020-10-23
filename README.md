@@ -26,9 +26,11 @@ You need [Starship][starship] in order to use those.
 ## Todo ##
 
 * Include description for following:
+    - download link for the config files
     - coloring is based on the CI of the languages/services/tools
     - disabled => uncomment to change the default config
     - activate linebreak
+    - explain directory substitutions
     - setup _right prompt_ in [Fish Shell][fish]
     - setting of the `time` module
 * Include the used font of the preview pictures in the Introduction

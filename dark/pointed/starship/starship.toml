@@ -1,11 +1,11 @@
 # Myth Dark Pointed config for Starship
-# (c) 2020 by Mick Hohmann, last changed 2020-10-19 21:11
+# (c) 2020 by Mick Hohmann, last changed 2020-10-22 23:08
 
 # Don't print a new line at the start of the prompt
 add_newline = false
 
 # Order of modules on prompt
-format = """[](bg:#464347 fg:#6F6A70)\
+format = """[](bg:#464347 fg:#AFD700)\
         $time\
         $username\
         $hostname\
