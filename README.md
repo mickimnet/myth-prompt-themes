@@ -25,33 +25,33 @@ You need [Starship][starship] in order to use those.
 
 ## Todo ##
 
-* Include description for following:
-    - download link for the config files
-    - coloring is based on the CI of the languages/services/tools
-    - disabled => uncomment to change the default config
-    - activate linebreak
-    - explain directory substitutions
-    - setup _right prompt_ in [Fish Shell][fish]
-    - setting of the `time` module
-* Include the used font of the preview pictures in the Introduction
-* [Starship][starship] config: set a good symbol for `vicmd`
+- Include description for following:
+    + download link for the config files
+    + coloring is based on the CI of the languages/services/tools
+    + disabled => uncomment to change the default config
+    + activate linebreak
+    + explain directory substitutions
+    + setup _right prompt_ in [Fish Shell][fish]
+    + setting of the `time` module
+- Include the used font of the preview pictures in the Introduction
+- [Starship][starship] config: set a good symbol for `vicmd`
 
 ## Update history ##
 
 ### Version 0.2: 2020-10-19 ###
 
-* for the [Starship][starship] version:
-    - redid the preview images, for smaller size and better overview
-    - finalized the `dark/pointed` variant
-    - updated the background of the `dark/slanted` variant
-    - changed the display of the `cmd_duration`, `jobs`, `shlvl` and the `status` module
-    - changed the symbol of the `deleted` status in the `git_status` module
-    - changed the symbol of the
+- for the [Starship][starship] version:
+    + redid the preview images, for smaller size and better overview
+    + finalized the `dark/pointed` variant
+    + updated the background of the `dark/slanted` variant
+    + changed the display of the `cmd_duration`, `jobs`, `shlvl` and the `status` module
+    + changed the symbol of the `deleted` status in the `git_status` module
+    + changed the symbol of the
 
 ### Version 0.1: 2020-10-19 ###
 
-* just configurations for [Starship][starship]
-* the MVP ;)
+- just configurations for [Starship][starship]
+- the MVP ;)
 
 ## Thanks ##
 
