@@ -15,7 +15,7 @@ format = """\
         $hg_branch\
         $docker_context\
         $package\
-        (↓ Toolchain version modules ↓)\
+        ( ↓ Toolchain version modules ↓ )\
         $cmake\
         $dart\
         $dotnet\
@@ -26,6 +26,7 @@ format = """\
         $helm\
         $java\
         $julia\
+        $lua\
         $nim\
         $nodejs\
         $ocaml\
@@ -38,12 +39,13 @@ format = """\
         $swift\
         $terraform\
         $zig\
-        (↑ Toolchain version modules ↑)\
+        ( ↑ Toolchain version modules ↑ )\
         $nix_shell\
         $conda\
         $memory_usage\
         $aws\
         $gcloud\
+        $openstack\
         $env_var\
         $crystal\
         $cmd_duration\
@@ -66,64 +68,61 @@ add_newline = true
 
 [aws]
 disabled = false
-format = '[[](bg:yellow fg:#464347)on $symbol$profile(\($region\))[](bg:#464347 fg:yellow)]($style)'
+format = 'on [$symbol$profile(\($region\))]($style) '
 symbol = " "
-style = "bg:yellow fg:black"
+style = "bold yellow"
 
 [battery]
 disabled = false
 full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
-format = "[[](bg:white fg:#464347)$symbol$percentage[](bg:#464347 fg:white)]($style)"
+format = "[$symbol$percentage]($style) "
 [[battery.display]]
 threshold = 10
-style = "bg:white fg:red"
-[[battery.display]]
-threshold = 100
-style = "bg:white fg:red"
+style = "red bold"
 
 [character]
 disabled = false
 format = "$symbol "
-success_symbol = "[[](bg:green fg:#464347)](fg:green)"
-error_symbol = "[[](bg:red fg:#464347)](fg:red)"
-vicmd_symbol = "[[](bg:#6f6a70 fg:#464347)[](bg:#464347 fg:#6f6a70)](bold bg:#6f6a70 fg:redd)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
 
 [cmake]
 disabled = false
-format = "[[](bg:blue fg:#464347)via $symbol$version[](bg:#464347 fg:blue)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "喝 "
-style = "bg:blue fg:black"
+style = "bold blue"
 
 [cmd_duration]
 disabled = false
 min_time = 2_000
-format = "[ took $duration[](fg:#464347)]($style)"
+format = "took [$duration]($style) "
 show_milliseconds = false
-style = "bg:#464347 fg:yellow"
+style = "yellow bold"
 show_notifications = false
 min_time_to_notify = 45_000
 
 [conda]
 disabled = false
 truncation_length = 1
-format = "[[](bg:green fg:#464347)via $symbol$environment[](bg:#464347 fg:green)]($style)"
+format = "via [$symbol$environment]($style) "
 symbol = " "
-style = "bg:green fg:black"
+style = "green bold"
 ignore_base = true
 
 [crystal]
 disabled = false
-format = "[[](bg:red fg:#464347)via $symbol$version[](bg:#464347 fg:red)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "🔮 "
-style = "bg:red fg:black"
+style = "bold red"
 
 [dart]
 disabled = false
-format = "[[](bg:blue fg:#464347)via $symbol$version[](bg:#464347 fg:blue)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:blue fg:black"
+style = "bold blue"
 
 [directory]
 disabled = false
@@ -131,10 +130,10 @@ truncation_length = 3
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
 use_logical_path = true
-format = "[[](bg:cyan fg:#464347)$path[](bg:#464347 fg:cyan)]($style)([[](bg:red fg:#464347)$read_only[](bg:#464347 fg:red)]($read_only_style))"
-style = "italic bg:cyan fg:black"
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "cyan bold"
 read_only = "🔒"
-read_only_style = "bg:red"
+read_only_style = "red"
 truncation_symbol = ""
 
 # [directory.substitutions]
@@ -143,62 +142,62 @@ truncation_symbol = ""
 [docker_context]
 disabled = false
 symbol = " "
-style = "bg:blue fg:black"
-format = "[[](bg:blue fg:#464347)via $symbol$context[](bg:#464347 fg:blue)]($style)"
+style = "blue bold"
+format = "via [$symbol$context]($style) "
 only_with_files = true
 
 [dotnet]
 disabled = false
-format = "[[](bg:blue fg:#464347)$symbol$version( 🎯 $tfm)[](bg:#464347 fg:blue)]($style)"
+format = "[$symbol$version( 🎯 $tfm)]($style) "
 symbol = "•NET "
-style = "bg:blue fg:black"
+style = "blue bold"
 heuristic = true
 
 [elixir]
 disabled = false
-format = '[[](bg:purple fg:#464347)via $symbol$version \(OTP $otp_version\)[](bg:#464347 fg:purple)]($style)'
+format = 'via [$symbol$version \(OTP $otp_version\)]($style) '
 symbol = " "
-style = "bg:purple fg:black"
+style = "bold purple"
 
 [elm]
 disabled = false
-format = "[[](bg:cyan fg:#464347)via $symbol$version[](bg:#464347 fg:cyan)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:cyan fg:black"
+style = "cyan bold"
 
 [env_var]
 disabled = false
 symbol = ""
-style = "bg:#888888 fg:black"
+style = "black bold dimmed"
 # variable = ""
 # default = ""
-format = "([[](bg:#888888 fg:#464347)with $symbol$env_value[](bg:#464347 fg:#888888)]($style))"
+format = "with [$env_value]($style) "
 
 [erlang]
 disabled = false
-format = "[[](bg:red fg:#464347)via $symbol$version[](bg:#464347 fg:red)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:red fg:black"
+style = "bold red"
 
 [gcloud]
 disabled = false
-format = '[[](bg:blue fg:#464347)on $symbol$account(\($region\))[](bg:#464347 fg:blue)]($style)'
-symbol = "☁️ "
-style = "bg:blue fg:black"
+format = 'on [$symbol$account(\($region\))]($style) '
+symbol = " "
+style = "bold blue"
 
 [git_branch]
 disabled = false
-format = "[[](bg:purple fg:#464347)on $symbol$branch[](bg:#464347 fg:purple)]($style)"
+format = "on [$symbol$branch]($style) "
 symbol = " "
-style = "bg:purple fg:black"
+style = "bold purple"
 # truncation_length = 7 # default = 2^63 - 1
 truncation_symbol = "…"
 
 [git_commit]
 disabled = false
 commit_hash_length = 7
-format = '[[](bg:green fg:#464347)\($hash\)[](bg:#464347 fg:green)]($style)'
-style = "bg:green fg:black"
+format = '[\($hash\)]($style) '
+style = "green bold"
 only_detached = true
 
 [git_state]
@@ -210,13 +209,13 @@ cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-style = "bg:yellow fg:black"
-format = '\([[](bg:yellow fg:#464347)$state( $progress_current/$progress_total )[](bg:#464347 fg:yellow)]($style)\)'
+style = "bold yellow"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_status]
 disabled = false
-format = '([[](bg:red fg:#464347)\[$all_status$ahead_behind\][](bg:#464347 fg:red)]($style))'
-style = "bg:red fg:black"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "red bold"
 stashed = '\$'
 ahead = "⇡"
 behind = "⇣"
@@ -230,119 +229,130 @@ untracked = "?"
 
 [golang]
 disabled = false
-format = "[[](bg:cyan fg:#464347)via $symbol$version[](bg:#464347 fg:cyan)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:cyan fg:black"
+style = "bold cyan"
 
 [helm]
 disabled = false
-format = "[[](bg:white fg:#464347)via $symbol$version[](bg:#464347 fg:white)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "⎈ "
-style = "bg:white fg:black"
+style = "bold white"
 
 [hostname]
 disabled = false
 ssh_only = true
 trim_at = "."
-## look for a dimmed variant
-format = "[[](bg:green fg:#464347)($style)$hostname [in](bg:green fg:#808080)[](bg:#464347 fg:green)]($style)"
-style = "bg:green fg:black"
+format = "[$hostname]($style) in "
+style = "green dimmed bold"
 
 [java]
 disabled = false
-## look for a dimmed variant
-format = "[[](bg:red fg:#464347)via $symbol$version[](bg:#464347 fg:red)]($style)"
-style = "bg:red fg:black"
+format = "via [$symbol$version]($style) "
+style = "red dimmed"
 symbol = " "
 
 [jobs]
 disabled = false
 threshold = 1
-format = "[$symbol$number ]($style)"
+format = "[$symbol$number]($style) "
 symbol = "✦"
-style = "bg:#464347 fg:blue"
+style = "bold blue"
 
 [julia]
 disabled = false
-format = "[[](bg:purple fg:#464347)via $symbol$version[](bg:#464347 fg:purple)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:purple fg:black"
+style = "bold purple"
 
 [kubernetes]
 disabled = true
 symbol = "☸ "
-format = '[[](bg:cyan fg:#464347)$symbol$context( \($namespace\)) in[](bg:#464347 fg:cyan)]($style)'
-style = "bg:cyan fg:black"
+format = '[$symbol$context( \($namespace\))]($style) in '
+style = "cyan bold"
 
 [line_break]
 disabled = false
 
+[lua]
+disabled = false
+format = "via [$symbol$version]($style) "
+symbol = "🌙 "
+style = "bold blue"
+lua_binary = "lua"
+
 [memory_usage]
 disabled = true
 threshold = 75
-format = "[[](bg:#BBBBBB fg:#464347)via $symbol$ram( | $swap)[](bg:#464347 fg:#BBBBBB)]($style)"
-style = "bg:#BBBBBB fg:black"
+format = "via $symbol[$ram( | $swap)]($style) "
+style = "white bold dimmed"
 symbol = " "
 
 # Mercurial
 [hg_branch]
 disabled = false
 symbol = " "
-style = "bg:purple fg:black"
-format = "[[](bg:purple fg:#464347)on $symbol$branch[](bg:#464347 fg:purple)]($style)"
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
 # truncation_length = 8 # default = 2^63 - 1
 truncation_symbol = "…"
 
 [nim]
 disabled = false
-format = "[[](bg:yellow fg:#464347)via $symbol$version[](bg:#464347 fg:yellow)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:yellow fg:black"
+style = "yellow bold"
 
 [nix_shell]
 disabled = false
-format = '[[](bg:blue fg:#464347)via $symbol$state( \($name\))[](bg:#464347 fg:blue)]($style)'
-symbol = " "
-style = "bg:blue fg:black"
+format = 'via [$symbol$state( \($name\))]($style) '
+symbol = "  "
+style = "bold blue"
 impure_msg = "impure"
 pure_msg = "pure"
 
 [nodejs]
 disabled = false
-format = "[[](bg:green fg:#464347)via $symbol$version[](bg:#464347 fg:green)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:green fg:black"
+style = "bold green"
 
 [ocaml]
 disabled = false
-format = "[[](bg:yellow fg:#464347)via $symbol$version[](bg:#464347 fg:yellow)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "🐫 "
-style = "bg:yellow fg:black"
+style = "bold yellow"
+
+[openstack]
+disabled = false
+format = "on [$symbol$cloud(\\($project\\))]($style) "
+symbol = " "
+style = "bold yellow"
 
 [package]
 disabled = false
-format = "[[](bg:208 fg:#464347)is $symbol$version[](bg:#464347 fg:208)]($style)"
+format = "is [$symbol$version]($style) "
 symbol = " "
-style = "bg:208 fg:black"
+style = "208 bold"
 display_private = false
 
 [perl]
 disabled = false
 symbol = " "
-style = "bg:149 fg:black"
-format = "[[](bg:149 fg:#464347)via $symbol$version[](bg:#464347 fg:149)]($style)"
+style = "149 bold"
+format = "via [$symbol$version]($style) "
 
 [php]
 disabled = false
 symbol = " "
-style = "bg:147 fg:black"
-format = "[[](bg:147 fg:#464347)via $symbol$version[](bg:#464347 fg:147)]($style)"
+style = "147 bold"
+format = "via [$symbol$version]($style) "
 
 [purescript]
 disabled = false
-format = "[[](bg:white fg:#464347)via $symbol$version[](bg:#464347 fg:white)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "<=> "
-style = "bg:white fg:black"
+style = "bold white"
 
 [python]
 disabled = false
@@ -350,58 +360,57 @@ pyenv_version_name = false
 pyenv_prefix = "pyenv "
 python_binary = "python"
 scan_for_pyfiles = true
-format = '[[](bg:yellow fg:#464347)via $symbol$pyenv_prefix$version( \($virtualenv\))[](bg:#464347 fg:yellow)]($style)'
-style = "bg:yellow fg:black"
+format = 'via [${symbol}${pyenv_prefix}${version}( \($virtualenv\))]($style) '
+style = "yellow bold"
 symbol = " "
 
 [ruby]
 disabled = false
-format = "[[](bg:red fg:#464347)via $symbol$version[](bg:#464347 fg:red)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:red fg:black"
+style = "bold red"
 
 [rust]
 disabled = false
-format = "[[](bg:red fg:#464347)via $symbol$version[](bg:#464347 fg:red)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = " "
-style = "bg:red fg:black"
+style = "bold red"
 
 [shlvl]
 disabled = true
 threshold = 2
-format = "[ $symbol$shlvl]($style)"
+format = "[$symbol$shlvl]($style) "
 symbol = "↕️  " # extra space for emoji
-style = "bg:#464347 fg:yellow"
+style = "bold yellow"
 
 [singularity]
 disabled = false
-## look for a dimmed variant
-format = '[[](bg:blue fg:#464347)$symbol\[$env\][](bg:#464347 fg:blue)]($style)'
+format = '[$symbol\[$env\]]($style) '
 symbol = ""
-style = "bg:blue fg:black"
+style = "blue bold dimmed"
 
 [swift]
 disabled = false
-format = "[[](bg:202 fg:#464347)via $symbol$version[](bg:#464347 fg:202)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "ﯣ "
-style = "bg:202 fg:black"
+style = "bold 202"
 
 [status]
 disabled = true
-format = "[$symbol$status]($style)"
+format = "[$symbol$status]($style) "
 symbol = "✖"
-style = "bg:#464347 fg:red"
+style = "bold red"
 
 [terraform]
 disabled = false
-format = '[[](bg:105 fg:#464347)via $symbol\($workspace\)[](bg:#464347 fg:105)]($style)'
+format = "via [$symbol$workspace]($style) "
 symbol = "💠 "
-style = "bg:105 fg:black"
+style = "bold 105"
 
 [time]
 disabled = true
-format = "[[](bg:yellow fg:#464347)at $time[](bg:#464347 fg:yellow)]($style)"
-style = "bg:yellow fg:black"
+format = "at [$time]($style) "
+style = "bold yellow"
 use_12hr = false
 time_format = ""
 utc_time_offset = "local"
@@ -409,14 +418,14 @@ time_range = "-"
 
 [username]
 disabled = false
-format = "[[](bg:yellow fg:#464347)$user [in](bg:yellow fg:#808080)[](bg:#464347 fg:yellow)]($style)"
-style_root = "bg:yellow fg:red"
-style_user = "bg:yellow fg:black"
+format = "[$user]($style) in "
+style_root = "red bold"
+style_user = "yellow bold"
 show_always = false
 
 [zig]
 disabled = false
-format = "[[](bg:yellow fg:#464347)via $symbol$version[](bg:#464347 fg:yellow)]($style)"
+format = "via [$symbol$version]($style) "
 symbol = "↯ "
-style = "bg:yellow fg:black"
+style = "bold yellow"
 #EOF.

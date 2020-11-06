@@ -15,7 +15,7 @@ format = """\
         $hg_branch\
         $docker_context\
         $package\
-        ( ↓ Toolchain version modules ↓ )\
+        ( ↓ Toolchain version modules ↓ )
         $cmake\
         $dart\
         $dotnet\
@@ -39,7 +39,7 @@ format = """\
         $swift\
         $terraform\
         $zig\
-        ( ↑ Toolchain version modules ↑ )\
+        ( ↑ Toolchain version modules ↑ )
         $nix_shell\
         $conda\
         $memory_usage\
@@ -50,9 +50,7 @@ format = """\
         $crystal\
         $cmd_duration\
         $custom\
-        (↑ above input line ↑)\
         $line_break\
-        (↓ on input line ↓)\
         $jobs\
         $battery\
         $time\
@@ -68,7 +66,7 @@ add_newline = true
 
 [aws]
 disabled = false
-format = 'on [$symbol$profile(\($region\))]($style) '
+format = '[$symbol$profile(\($region\))]($style) '
 symbol = "☁️  "
 style = "bold yellow"
 
@@ -91,7 +89,7 @@ vicmd_symbol = "[❮](bold green)"
 
 [cmake]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "喝 "
 style = "bold blue"
 
@@ -107,20 +105,20 @@ min_time_to_notify = 45_000
 [conda]
 disabled = false
 truncation_length = 1
-format = "via [$symbol$environment]($style) "
+format = "[$symbol$environment]($style) "
 symbol = "🅒 "
 style = "green bold"
 ignore_base = true
 
 [crystal]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🔮 "
 style = "bold red"
 
 [dart]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🎯 "
 style = "bold blue"
 
@@ -143,7 +141,7 @@ truncation_symbol = ""
 disabled = false
 symbol = "🐳 "
 style = "blue bold"
-format = "via [$symbol$context]($style) "
+format = "[$symbol$context]($style) "
 only_with_files = true
 
 [dotnet]
@@ -155,13 +153,13 @@ heuristic = true
 
 [elixir]
 disabled = false
-format = 'via [$symbol$version \(OTP $otp_version\)]($style) '
+format = '[$symbol$version \(OTP $otp_version\)]($style) '
 symbol = "💧 "
 style = "bold purple"
 
 [elm]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🌳 "
 style = "cyan bold"
 
@@ -171,23 +169,23 @@ symbol = ""
 style = "black bold dimmed"
 # variable = ""
 # default = ""
-format = "with [$env_value]($style) "
+format = "[$env_value]($style) "
 
 [erlang]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = " "
 style = "bold red"
 
 [gcloud]
 disabled = false
-format = 'on [$symbol$account(\($region\))]($style) '
+format = '[$symbol$account(\($region\))]($style) '
 symbol = "☁️ "
 style = "bold blue"
 
 [git_branch]
 disabled = false
-format = "on [$symbol$branch]($style) "
+format = "[$symbol$branch]($style) "
 symbol = " "
 style = "bold purple"
 # truncation_length = 7 # default = 2^63 - 1
@@ -229,13 +227,13 @@ untracked = "?"
 
 [golang]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🐹 "
 style = "bold cyan"
 
 [helm]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "⎈ "
 style = "bold white"
 
@@ -248,7 +246,7 @@ style = "green dimmed bold"
 
 [java]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 style = "red dimmed"
 symbol = "☕ "
 
@@ -261,7 +259,7 @@ style = "bold blue"
 
 [julia]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "ஃ "
 style = "bold purple"
 
@@ -276,7 +274,7 @@ disabled = false
 
 [lua]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🌙 "
 style = "bold blue"
 lua_binary = "lua"
@@ -284,7 +282,7 @@ lua_binary = "lua"
 [memory_usage]
 disabled = true
 threshold = 75
-format = "via $symbol[$ram( | $swap)]($style) "
+format = "$symbol[$ram( | $swap)]($style) "
 style = "white bold dimmed"
 symbol = "🐏 "
 
@@ -293,19 +291,19 @@ symbol = "🐏 "
 disabled = false
 symbol = " "
 style = "bold purple"
-format = "on [$symbol$branch]($style) "
+format = "[$symbol$branch]($style) "
 # truncation_length = 8 # default = 2^63 - 1
 truncation_symbol = "…"
 
 [nim]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "👑 "
 style = "yellow bold"
 
 [nix_shell]
 disabled = false
-format = 'via [$symbol$state( \($name\))]($style) '
+format = '[$symbol$state( \($name\))]($style) '
 symbol = "❄️  "
 style = "bold blue"
 impure_msg = "impure"
@@ -313,19 +311,19 @@ pure_msg = "pure"
 
 [nodejs]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "⬢ "
 style = "bold green"
 
 [ocaml]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🐫 "
 style = "bold yellow"
 
 [openstack]
 disabled = false
-format = "on [$symbol$cloud(\\($project\\))]($style) "
+format = "[$symbol$cloud(\\($project\\))]($style) "
 symbol = "☁️  "
 style = "bold yellow"
 
@@ -340,17 +338,17 @@ display_private = false
 disabled = false
 symbol = "🐪 "
 style = "149 bold"
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 
 [php]
 disabled = false
 symbol = "🐘 "
 style = "147 bold"
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 
 [purescript]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "<=> "
 style = "bold white"
 
@@ -360,19 +358,19 @@ pyenv_version_name = false
 pyenv_prefix = "pyenv "
 python_binary = "python"
 scan_for_pyfiles = true
-format = 'via [${symbol}${pyenv_prefix}${version}( \($virtualenv\))]($style) '
+format = '[${symbol}${pyenv_prefix}${version}( \($virtualenv\))]($style) '
 style = "yellow bold"
 symbol = "🐍 "
 
 [ruby]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "💎 "
 style = "bold red"
 
 [rust]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🦀 "
 style = "bold red"
 
@@ -391,7 +389,7 @@ style = "blue bold dimmed"
 
 [swift]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "🐦 "
 style = "bold 202"
 
@@ -403,7 +401,7 @@ style = "bold red"
 
 [terraform]
 disabled = false
-format = "via [$symbol$workspace]($style) "
+format = "[$symbol$workspace]($style) "
 symbol = "💠 "
 style = "bold 105"
 
@@ -425,7 +423,7 @@ show_always = false
 
 [zig]
 disabled = false
-format = "via [$symbol$version]($style) "
+format = "[$symbol$version]($style) "
 symbol = "↯ "
 style = "bold yellow"
 #EOF.
