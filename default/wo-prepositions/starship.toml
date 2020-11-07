@@ -15,7 +15,7 @@ format = """\
         $hg_branch\
         $docker_context\
         $package\
-        ( ↓ Toolchain version modules ↓ )
+        ( ↓ Toolchain version modules ↓ )\
         $cmake\
         $dart\
         $dotnet\
@@ -39,7 +39,7 @@ format = """\
         $swift\
         $terraform\
         $zig\
-        ( ↑ Toolchain version modules ↑ )
+        ( ↑ Toolchain version modules ↑ )\
         $nix_shell\
         $conda\
         $memory_usage\
