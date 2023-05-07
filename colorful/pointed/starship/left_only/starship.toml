@@ -1,4 +1,4 @@
-# Myth Orange Pointed config for Starship
+# Myth Orange Pointed (left only) config for Starship
 # Copyright (c) 2020-2023 by Mick Hohamnn (@mickimnet), last changed: 2023-05-07 13:32
 # Note: comments for symbols refer to the class name of Nerd Fonts
 # Starship version support: 1.14.2
@@ -46,6 +46,16 @@ format = """\
     ([](bg:color_vagrant fg:color_background_base)$vagrant[](bg:color_background_base fg:color_vagrant))\
     (↑ Container modules ↑)\
     (↓ Source control ↓)\
+    ([](bg:color_fossil fg:color_background_base)$fossil_branch[](bg:color_background_base fg:color_fossil))\
+    ([](bg:color_mercurial fg:color_background_base)$hg_branch[](bg:color_background_base fg:color_mercurial))\
+    ([](bg:color_pijul_channel fg:color_background_base)$pijul_channel[](bg:color_background_base fg:color_pijul_channel))\
+    ([](bg:color_git_branch fg:color_background_base)${custom.giturl})\
+    ([ ](bg:color_git_branch fg:color_foreground_dark)$git_branch[](bg:color_background_base fg:color_git_branch))\
+    ([](bg:color_git_commit fg:color_git_branch)$git_commit[](bg:color_background_base fg:color_git_commit))\
+    ([](bg:color_git_status fg:color_background_base)$git_status[](bg:color_background_base fg:color_git_status))\
+    ([](bg:color_git_state fg:color_background_base)$git_state[](bg:color_background_base fg:color_git_state))\
+    ([](bg:color_git_metrics fg:color_background_base)$git_metrics[](bg:color_background_base fg:color_git_metrics))\
+    ([](bg:color_vcsh fg:color_background_base)$vcsh[](bg:color_background_base fg:color_vcsh))\
     (↑ Source control ↑)\
     (↓ Toolchain version modules ↓)\
     ([](bg:color_bun fg:color_background_base)$bun[](bg:color_background_base fg:color_bun))\
@@ -96,6 +106,12 @@ format = """\
     (↑ Package modules ↑)\
     ([](bg:color_memory fg:color_background_base)$memory_usage[](bg:color_background_base fg:color_memory))\
     ([](bg:color_env_var fg:color_background_base)${env_var.FIRST}[](bg:color_background_base fg:color_env_var))\
+    ([](bg:color_base_red_light fg:color_background_base)$battery[](bg:color_background_base fg:color_base_red_light))\
+    ([](bg:color_time fg:color_background_base)$time[](bg:color_background_base fg:color_time))\
+    (↓ Configuration shell modules ↓)\
+    ([](bg:color_guix fg:color_background_base)$guix_shell[](bg:color_background_base fg:color_guix))\
+    ([](bg:color_nix fg:color_background_base)$nix_shell[](bg:color_background_base fg:color_nix))\
+    (↑ Configuration shell modules ↑)\
     (↑ above input line ↑)\
     (\
         [](bg:none fg:color_background_base)\
@@ -108,27 +124,6 @@ format = """\
     ($jobs)\
     ($status)\
     ($character)\
-"""
-
-right_format = """
-    (\
-        [](bg:none fg:color_base_green)[](bg:color_base_green fg:color_background_base)\
-        ([](bg:color_background_base fg:color_guix)$guix_shell[](bg:color_guix fg:color_background_base))\
-        ([](bg:color_background_base fg:color_nix)$nix_shell[](bg:color_nix fg:color_background_base))\
-        ([](bg:color_background_base fg:color_vcsh)$vcsh[](bg:color_vcsh fg:color_background_base))\
-        ([](bg:color_background_base fg:color_fossil)$fossil_branch[](bg:color_fossil fg:color_background_base))\
-        ([](bg:color_background_base fg:color_mercurial)$hg_branch[](bg:color_mercurial fg:color_background_base))\
-        ([](bg:color_background_base fg:color_pijul_channel)$pijul_channel[](bg:color_pijul_channel fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_branch)${custom.giturl})\
-        ([ ](bg:color_git_branch fg:color_foreground_dark)$git_branch[](bg:color_git_branch fg:color_background_base))\
-        ([](bg:color_git_branch fg:color_git_commit)$git_commit[](bg:color_git_commit fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_status)$git_status[](bg:color_git_status fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_state)$git_state[](bg:color_git_state fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_metrics)$git_metrics[](bg:color_git_metrics fg:color_background_base))\
-        ([](bg:color_background_base fg:color_base_red_light)$battery[](bg:color_base_red_light fg:color_background_base))\
-        ([](bg:color_background_base fg:color_time)$time[](bg:color_time fg:color_background_base))\
-        [](bg:color_background_base fg:color_base_green)\
-    )\
 """
 
 [palettes.myth-dark]

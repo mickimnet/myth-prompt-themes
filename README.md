@@ -1,70 +1,103 @@
-# M.y.t.h.: prompt themes #
+---
+description: 
+type: 
+created: 2021-01-25
+modified: 2023-05-07
+---
+# M.y.t.h.: prompt themes
 
-> "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][mi])
+> "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][bookquote])
 
 [![licence badge]][licence] [![stars badge]][stargazer] [![issues badge]][issues]
 <!-- [![donation badge]][donate] -->
 
-## Introduction ##
+## Introduction
 
-This is a collection of prompt themes, I created for a couple of prompt tools. You can directly download an individual configuration you're looking for or clone the whole repository to get all.
+This will be a collection of prompt themes, for different prompt tools. Currently, supporting only [Starship][starship]. You can directly download an individual configuration or clone the whole repository to get all.
 
-## Preview ##
+The prompts are styled as a single-line prompt, based on the [Powerline style][powerline]. All symbols make use of [Nerd Fonts][nerdfonts], so you need a compatible font to see the symbols. The coloring requires a terminal with support for true color (24-bit). The configuration is tested with the [Nerd Font][nerdfonts] variants of FiraCode, Hack, and Victor (the configuration files include additional symbols if you don't like the defaults).
 
-### Starship ###
+## Starship
 
-You need [Starship][starship] in order to use those.
+The configuration (aka theme) for [Starship][starship], covers **all** modules up to _Starship_ version 1.14.2. There are (currently) two variants: one (_general_) for shells with right prompt support ([cmd][cmd], [elvish][elvish], [Fish Shell][fish], [nushell][nushell], [xonsh][xonsh], [zsh][zsh]), and one for those which don't support it (called _left_only_).
 
-#### M.y.t.h. Dark Pointed: ####
+There are custom modules for _username_ and _hostname_, as I prefer different visibility in `tmux` sessions. Otherwise, they behave like the standard modules, meaning the _username_ is only shown if in a `ssh` session, or a different user (like root or different from `$LOGNAME`), and the _hostname_ is only shown in a `ssh` session. In a (remote) tmux session, the username is only shown if different from the login user, and the hostname is not shown at all. Because, both the username and the hostname are shown in my tmux status line.
 
-![M.y.t.h. Dark Pointed](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-pointed-starship.png)
+The `[directory]` module uses some substitutions for `~/Documents`, `~/Downloads`, `~/Music`, `~/Movies`, `~/Pictures`, `~/Sources` (check the `starship.toml` for more information) and also replaces the default path separator (`/`) with the powerline _light right arrow_ (`  `).
 
-#### M.y.t.h. Dark Slanted: ####
+The `[shell]` module is only visible, if different from the standard shell. My main shell is the [Fish Shell][fish], therefore no additional information is shown. You can change that in the `[shell]` module section in the `starship.toml` file.
 
-![M.y.t.h. Dark Slanted:](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-slanted-starship.png)
+Currently, the modules, which are enabled, are based on my personal preferences (see the #preview section for more information). You can use `starship config module_name.disable false` or `starship config module_name.disable true` to change that. If you're wondering what modules are shown and why, you can always use `starship explain` for that.
 
-## Todo ##
+If you don't like the symbols, I've included alternative symbols in the `starship.toml`. If you would like to have a newline before the prompt, use `starship config add_newline true`.
 
-- Include description for following:
-    + download link for the config files
-    + coloring is based on the CI of the languages/services/tools
-    + disabled => uncomment to change the default config
-    + activate linebreak
-    + explain directory substitutions
-    + setup _right prompt_ in [Fish Shell][fish]
-    + setting of the `time` module
-- Include the used font of the preview pictures in the Introduction
-- [Starship][starship] config: set a good symbol for `vicmd`
+### Preview
 
-## Update history ##
+The preview images are done with [iTerm](iterm) on _macOS_, and the font used is a patched [Input][input] font (to include _Nerd Font_ support and to add ligatures).
 
-### Version 0.2: 2020-10-19 ###
+The following modules are **shown in the preview** and are **disabled** in the `starship.toml` configuration files (list is in order of appearance):
+- **Memory** (seen in the _home_ directory where the user is _root_)**:** to enable use `starship config memory_usage.disabled false`.
+- **OS** (seen in the _home_ & _infra_ directories)**:** to enable use `starship config os.disabled false`.
+- **Battery** (seen in the _nothings/gonna/stop/us/now_ directory)**:** is only shown if less than 20%. If you always want to show it, uncomment the section in the `starship.toml` file.
+- **Time** (seen in the _nothings/gonna/stop/us/now_ directory)**:** is only shown between 8 pm and 6 am--to remind you about R&R time :sunglasses: If you always want to show it, comment the `time_range` line in the `starship.toml` file out.
+- **Status** (seen in the _starbase_ directory)**:** to enable use `starship config os.disabled false`. The `[character]` module (the green pointed arrow) turns red if the shell exit code is not `0`. The `[status]` module shows additional information.
+- **Git Metrics** (seen in the _elixir_ and _node_ directories)**:** to enable use `starship config git_metrics.disabled false`.
+- **Shell** (seen in the _go_ directory)**:** my default shell is the [Fish Shell][fish], therefore only any other shells are shown. See the `[shell]` section in `starship.toml` for further information and to change or adapt to your liking.
+- **Command duration** (seen in the _python-project_ directory): to enable use `starship config cmd_duration.disabled false`.
 
-- for the [Starship][starship] version:
-    + redid the preview images, for smaller size and better overview
-    + finalized the `dark/pointed` variant
-    + updated the background of the `dark/slanted` variant
-    + changed the display of the `cmd_duration`, `jobs`, `shlvl` and the `status` module
-    + changed the symbol of the `deleted` status in the `git_status` module
-    + changed the symbol of the
+#### M.y.t.h. Colorful Pointed:
 
-### Version 0.1: 2020-10-19 ###
+with right prompt support (general):
+![M.y.t.h. Colorful Pointed with right prompt support](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-pointed-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
-- just configurations for [Starship][starship]
-- the MVP ;)
+without right prompt support (left_only):
+![M.y.t.h. Colorful Pointed left side only](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-pointed-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
-## Thanks ##
+#### M.y.t.h. Colorful Slanted:
 
-Very big thanks goes out to [@elseym][siwa] for his invaluable support and feedback all the time. :yellow_heart:
+with right prompt support (general):
+![M.y.t.h. Colorful Slanted:](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-slanted-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
-*Always have fun:sunny: in what you're doing and* "DON'T PANIC"... :rocket:
+without right prompt support (left_only):
+![M.y.t.h. Colorful Slanted:](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-slanted-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
+## Update history
+
+### Version 1.0: 2023-05-01
+
+- renamed _Dark_ to _Colorful_ in preperation for upcoming variations
+- included all modules up to _Starship_ version 1.14.2
+- moved all colors to the [palettes] module
+- updated all symbols to reflect upcoming changes to [Nerd Fonts 3.0][nerdfonts] (the obsolete Material Design ones)
+- included _right prompt_ support in the _general_ configuration (for [cmd][cmd], [elvish][elvish], [Fish Shell][fish], [nushell][nushell], [xonsh][xonsh], [zsh][zsh])
+- moved the Powerline styling to the [format] module, so they can be easily adapted for left / right side variants or other powerline symbols
+- styled the `VI` command modes
+- styled the `continuation_prompt`
+- replaced my custom shell modules with the new standard `[shell]` module
+- included the shell script for module [custom.giturl]
+- styled the [line_break] module so it can be optionally used
+
+## Upcoming
+
+- light color scheme
+- new variations (with less colors)
+- download link for the config files
+
+## Thanks
+
+Very big thank you goes out to late [@elseym][siwa] for his invaluable support and feedback all the time. :black_heart: And thank you [@tom][tom] for always making time to listen to me and for your on point feedback. :yellow_heart:
+
+_Always have fun:sunny: in what you're doing and_ "DON'T PANIC"… :rocket:
 
 **Enjoy!**
 
 <!-- ------------------------------------ reference section ------------------------------------ -->
 
-[mi]: https://www.goodreads.com/book/show/74297.Myth_ion_Improbable
-[starship]: https://starship.rs/
+[bookquote]: https://www.goodreads.com/book/show/74297.Myth_ion_Improbable
 
 [licence badge]: https://img.shields.io/github/license/micck/myth-prompt-themes
 [licence]: <LICENSE>
@@ -75,6 +108,18 @@ Very big thanks goes out to [@elseym][siwa] for his invaluable support and feedb
 [paypal badge]: https://img.shields.io/badge/paypal-donate-ff69b4.svg?style=flat
 [donate]: https://ZZZ.not.yet.known/
 
+[starship]: https://starship.rs/
+[powerline]: https://powerline.readthedocs.io/en/latest/
+[nerdfonts]: https://www.nerdfonts.com
+[cmd]: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
+[elvish]: https://elv.sh
 [fish]: https://fishshell.com
+[nushell]: https://www.nushell.sh
+[xonsh]: https://xon.sh
+[zsh]: https://www.zsh.org
+
+[iterm]: https://iterm2.com
+[input]: https://input.djr.com
 
 [siwa]: https://github.com/elseym
+[tom]: …

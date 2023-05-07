@@ -1,438 +1,1051 @@
-# Myth Dark Slanted config for Starship
-# (c) 2020 by Mick Hohmann, last changed 2020-10-19 21:48
+# Myth Orange Slanted config for Starship
+# Copyright (c) 2020-2023 by Mick Hohamnn (@mickimnet), last changed: 2023-05-07 13:32
+# Note: comments for symbols refer to the class name of Nerd Fonts
+# Starship version support: 1.14.2
+"$schema" = 'https://starship.rs/config-schema.json'
 
-# Don't print a new line at the start of the prompt
-add_newline = false
+### Generic prompt configurations
+scan_timeout = 30 # default = 30
+command_timeout = 500 # default = 500
+add_newline = false # Don't print a new line before the start of the prompt
+continuation_prompt = "[](bg:color_background_base fg:color_base_orange)[](fg:color_background_base)"
+palette = "myth-dark" # select the color palette to be used
 
-# Order of modules on prompt
+## unsused, as it only makes sense with two line prompts
+# $fill\
+# (↓ fill - moves the modules below to the right side ↓)
+
+### Order of modules on prompt
 format = """\
-        $time\
-        $username\
-        $hostname\
-        $directory\
-        $aws\
-        $gcloud\
-        $singularity\
-        $kubernetes\
-        $docker_context\
-        (↓ Source control - for right side ↓)\
-        $hg_branch\
-        $git_branch\
-        $git_commit\
-        $git_status\
-        $git_state\
-        (↑ Source control - for right side ↑)\
-        (↓ Toolchain version modules ↓)\
-        $crystal\
-        $dart\
-        $dotnet\
-        $elixir\
-        $elm\
-        $erlang\
-        $golang\
-        $java\
-        $julia\
-        $nim\
-        $nodejs\
-        $ocaml\
-        $perl\
-        $php\
-        $purescript\
-        $python\
-        $ruby\
-        $rust\
-        $swift\
-        $terraform\
-        $zig\
-        (↑ Toolchain version modules ↑)\
-        (↓ Package modules ↓)\
-        $helm\
-        $package\
-        $cmake\
-        $conda\
-        (↑ Package modules ↑)\
-        $nix_shell\
-        $memory_usage\
-        $env_var\
-        $custom\
-        (↑ above input line ↑)\
+    $os\
+    ([ ](bg:color_background_base fg:color_foreground_dark)$shell[](bg:color_background_base fg:color_foreground_dark))\
+    ([ ](bg:color_background_base fg:color_base_red_light)$sudo[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_base_red_light)${custom.root}[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_username)${custom.ssh_user}[](bg:color_background_base fg:color_username))\
+    ([ ](bg:color_background_base fg:color_base_red_light)${custom.ssh_root}[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_hostname)${custom.ssh_host}[](bg:color_background_base fg:color_hostname))\
+    ([ ](bg:color_background_base fg:color_username)$username[](bg:color_background_base fg:color_username))\
+    ([ ](bg:color_background_base fg:color_hostname)$hostname[](bg:color_background_base fg:color_hostname))\
+    (↓ Styling of the directory module is handled in the module section ↓)\
+    ($directory)\
+    (↓ Cloud provider modules ↓)\
+    ([ ](bg:color_background_base fg:color_aws)$aws[](bg:color_background_base fg:color_aws))\
+    ([ ](bg:color_background_base fg:color_azure)$azure[](bg:color_background_base fg:color_azure))\
+    ([ ](bg:color_background_base fg:color_gcloud)$gcloud[](bg:color_background_base fg:color_gcloud))\
+    ([ ](bg:color_background_base fg:color_openstack)$openstack[](bg:color_background_base fg:color_openstack))\
+    (↑ Cloud provider modules ↑)\
+    (↓ Container modules ↓)\
+    ([ ](bg:color_background_base fg:color_kubernetes)$kubernetes[](bg:color_background_base fg:color_kubernetes))\
+    ([ ](bg:color_background_base fg:color_docker)$docker_context[](bg:color_background_base fg:color_docker))\
+    ([ ](bg:color_background_base fg:color_container)$container[](bg:color_background_base fg:color_container))\
+    ([ ](bg:color_background_base fg:color_opa)$opa[](bg:color_background_base fg:color_opa))\
+    ([ ](bg:color_background_base fg:color_pulumi)$pulumi[](bg:color_background_base fg:color_pulumi))\
+    ([ ](bg:color_background_base fg:color_singularity)$singularity[](bg:color_background_base fg:color_singularity))\
+    ([ ](bg:color_background_base fg:color_terraform)$terraform[](bg:color_background_base fg:color_terraform))\
+    ([ ](bg:color_background_base fg:color_vagrant)$vagrant[](bg:color_background_base fg:color_vagrant))\
+    (↑ Container modules ↑)\
+    (↓ Source control ↓)\
+    (↑ Source control ↑)\
+    (↓ Toolchain version modules ↓)\
+    ([ ](bg:color_background_base fg:color_bun)$bun[](bg:color_background_base fg:color_bun))\
+    ([ ](bg:color_background_base fg:color_c)$c[](bg:color_background_base fg:color_c))\
+    ([ ](bg:color_background_base fg:color_cobol)$cobol[](bg:color_background_base fg:color_cobol))\
+    ([ ](bg:color_background_base fg:color_crystal)$crystal[](bg:color_background_base fg:color_crystal))\
+    ([ ](bg:color_background_base fg:color_daml)$daml[](bg:color_background_base fg:color_daml))\
+    ([ ](bg:color_background_base fg:color_dart)$dart[](bg:color_background_base fg:color_dart))\
+    ([ ](bg:color_background_base fg:color_deno)$deno[](bg:color_background_base fg:color_deno))\
+    ([ ](bg:color_background_base fg:color_dotnet)$dotnet[](bg:color_background_base fg:color_dotnet))\
+    ([ ](bg:color_background_base fg:color_elixir)$elixir[](bg:color_background_base fg:color_elixir))\
+    ([ ](bg:color_background_base fg:color_elm)$elm[](bg:color_background_base fg:color_elm))\
+    ([ ](bg:color_background_base fg:color_erlang)$erlang[](bg:color_background_base fg:color_erlang))\
+    ([ ](bg:color_background_base fg:color_fennel)$fennel[](bg:color_background_base fg:color_fennel))\
+    ([ ](bg:color_background_base fg:color_golang)$golang[](bg:color_background_base fg:color_golang))\
+    ([ ](bg:color_background_base fg:color_haskell)$haskell[](bg:color_background_base fg:color_haskell))\
+    ([ ](bg:color_background_base fg:color_haxe)$haxe[](bg:color_background_base fg:color_haxe))\
+    ([ ](bg:color_background_base fg:color_java)$java[](bg:color_background_base fg:color_java))\
+    ([ ](bg:color_background_base fg:color_julia)$julia[](bg:color_background_base fg:color_julia))\
+    ([ ](bg:color_background_base fg:color_kotlin)$kotlin[](bg:color_background_base fg:color_kotlin))\
+    ([ ](bg:color_background_base fg:color_lua)$lua[](bg:color_background_base fg:color_lua))\
+    ([ ](bg:color_background_base fg:color_nim)$nim[](bg:color_background_base fg:color_nim))\
+    ([ ](bg:color_background_base fg:color_nodejs)$nodejs[](bg:color_background_base fg:color_nodejs))\
+    ([ ](bg:color_background_base fg:color_ocaml)$ocaml[](bg:color_background_base fg:color_ocaml))\
+    ([ ](bg:color_background_base fg:color_perl)$perl[](bg:color_background_base fg:color_perl))\
+    ([ ](bg:color_background_base fg:color_php)$php[](bg:color_background_base fg:color_php))\
+    ([ ](bg:color_background_base fg:color_purescript)$purescript[](bg:color_background_base fg:color_purescript))\
+    ([ ](bg:color_background_base fg:color_python)$python[](bg:color_background_base fg:color_python))\
+    ([ ](bg:color_background_base fg:color_raku)$raku[](bg:color_background_base fg:color_raku))\
+    ([ ](bg:color_background_base fg:color_red)$red[](bg:color_background_base fg:color_red))\
+    ([ ](bg:color_background_base fg:color_rlang)$rlang[](bg:color_background_base fg:color_rlang))\
+    ([ ](bg:color_background_base fg:color_ruby)$ruby[](bg:color_background_base fg:color_ruby))\
+    ([ ](bg:color_background_base fg:color_rust)$rust[](bg:color_background_base fg:color_rust))\
+    ([ ](bg:color_background_base fg:color_scala)$scala[](bg:color_background_base fg:color_scala))\
+    ([ ](bg:color_background_base fg:color_swift)$swift[](bg:color_background_base fg:color_swift))\
+    ([ ](bg:color_background_base fg:color_vlang)$vlang[](bg:color_background_base fg:color_vlang))\
+    ([ ](bg:color_background_base fg:color_zig)$zig[](bg:color_background_base fg:color_zig))\
+    (↑ Toolchain version modules ↑)\
+    (↓ Package modules ↓)\
+    ([ ](bg:color_background_base fg:color_package)$package[](bg:color_background_base fg:color_package))\
+    ([ ](bg:color_background_base fg:color_buf)$buf[](bg:color_background_base fg:color_buf))\
+    ([ ](bg:color_background_base fg:color_cmake)$cmake[](bg:color_background_base fg:color_cmake))\
+    ([ ](bg:color_background_base fg:color_conda)$conda[](bg:color_background_base fg:color_conda))\
+    ([ ](bg:color_background_base fg:color_gradle)$gradle[](bg:color_background_base fg:color_gradle))\
+    ([ ](bg:color_background_base fg:color_helm)$helm[](bg:color_background_base fg:color_helm))\
+    ([ ](bg:color_background_base fg:color_meson)$meson[](bg:color_background_base fg:color_meson))\
+    ([ ](bg:color_background_base fg:color_spack)$spack[](bg:color_background_base fg:color_spack))\
+    (↑ Package modules ↑)\
+    ([ ](bg:color_background_base fg:color_memory)$memory_usage[](bg:color_background_base fg:color_memory))\
+    ([ ](bg:color_background_base fg:color_env_var)${env_var.FIRST}[](bg:color_background_base fg:color_env_var))\
+    (↑ above input line ↑)\
+    (\
+        [](bg:none fg:color_background_base)\
         $line_break\
-        (↓ on input line ↓)\
-        $battery\
-        $shlvl\
-        $jobs\
-        $cmd_duration\
-        $status\
-        $character\
-    """
+    )\
+    (↓ on input line ↓)\
+    ($localip)\
+    ($cmd_duration)\
+    ($shlvl)\
+    ($jobs)\
+    ($status)\
+    ($character)\
+"""
 
-# Generic prompt configurations
-[character]
-success_symbol = "[[](bg:#AFD700 fg:#464347)](fg:#AFD700)"
-error_symbol = "[[](bg:#ff3322 fg:#464347)](fg:#ff3322)"
-vicmd_symbol = "[[](bg:#6f6a70 fg:#464347)[](bg:#464347 fg:#6f6a70)](bold bg:#6f6a70 fg:#ff3322)"
-format = "[[ ](bg:#464347)$symbol ]($style)"
+right_format = """
+    (\
+        [](bg:none fg:color_base_green)[](bg:color_base_green fg:color_background_base)\
+        ([ ](bg:color_background_base fg:color_guix)$guix_shell[](bg:color_background_base fg:color_guix))\
+        ([ ](bg:color_background_base fg:color_nix)$nix_shell[](bg:color_background_base fg:color_nix))\
+        ([ ](bg:color_background_base fg:color_vcsh)$vcsh[](bg:color_background_base fg:color_vcsh))\
+        ([ ](bg:color_background_base fg:color_fossil)$fossil_branch[](bg:color_background_base fg:color_fossil))\
+        ([ ](bg:color_background_base fg:color_mercurial)$hg_branch[](bg:color_background_base fg:color_mercurial))\
+        ([ ](bg:color_background_base fg:color_pijul_channel)$pijul_channel[](bg:color_background_base fg:color_pijul_channel))\
+        ([ ](bg:color_background_base fg:color_git_branch)${custom.giturl})\
+        ([ ](bg:color_git_branch fg:color_foreground_dark)$git_branch[](bg:color_background_base fg:color_git_branch))\
+        ([ ](bg:color_git_branch fg:color_git_commit)$git_commit[](bg:color_background_base fg:color_git_commit))\
+        ([ ](bg:color_background_base fg:color_git_status)$git_status[](bg:color_background_base fg:color_git_status))\
+        ([ ](bg:color_background_base fg:color_git_state)$git_state[](bg:color_background_base fg:color_git_state))\
+        ([ ](bg:color_background_base fg:color_git_metrics)$git_metrics[](bg:color_background_base fg:color_git_metrics))\
+        ([ ](bg:color_background_base fg:color_base_red_light)$battery[](bg:color_background_base fg:color_base_red_light))\
+        ([ ](bg:color_background_base fg:color_time)$time[](bg:color_background_base fg:color_time))\
+        [ ](bg:color_background_base)\
+    )\
+"""
+
+[palettes.myth-dark]
+## Generics -- editor
+color_foreground_light = "#EDEDED" # myth_editor_foreground
+color_foreground_dark = "#121212" # myth_editor_background
+color_background_base = "#464347"
+color_directory = "#6F6A70" # myth_editor_
+color_directory_repo_before = "#8A848B" # myth_editor_
+color_hostname = "#22AA22" # myth_hosts_local
+color_username = "#1988FF" # myth_editor_enitity
+color_base_green = "#C6FF1A" # myth_editor_constants
+color_base_magenta = "#BF66FF" # myth_editor_deprecated
+color_base_orange = "#FFA200" # myth_editor_main
+color_base_red = "#E83017" # myth_editor_diff_removed
+color_base_red_light = "#FF620D" # myth_editor_function
+color_base_red_dark = "#BD1000"
+color_base_yellow = "#FFD90D" # myth_editor_storages
+## Specifics
+## General colors
+color_os = "#AFD700" # color_base_green
+color_env_var = "#BBBBBB" # color_memory
+color_memory = "#BBBBBB" # color_memory
+color_shell_level = "#FFD90D" # color_base_yellow
+color_time = "#FFA200" # color_base_orange
+color_vimcmd = "#6F6A70" # color_directory
+## Cloud provider colors
+color_aws = "#EC912D"
+color_azure = "#0078D4"
+color_gcloud = "#1A73E8"
+color_openstack = "#DC374A"
+## Container colors
+color_container = "#6F6A70" # color_directory
+color_docker = "#3A91DC"
+color_kubernetes = "#3371E3"
+color_opa = "#47B3DE"
+color_pulumi = "#805AC3"
+color_singularity = "#1D315F"
+color_vagrant = "#2E71E5"
+color_terraform = "#5836CD"
+## Source control colors
+color_fossil = "#4183C4"
+color_git_branch = "#96AB5F"
+color_git_commit = "#E58F73"
+color_git_metrics = "#6F6A70" # color_directory
+color_git_metrics_added = "#C6FF1A" # color_base_green
+color_git_metrics_deleted = "#E83017" # color_base_red
+color_git_state = "#E58F73" # color_git_commit
+color_git_status = "#E0B25D"
+color_mercurial = "#96AB5F" # color_git_branch
+color_pijul_channel = "#2A4165"
+color_vcsh = "#121212" # color_foreground_dark
+## Toolchain version colors
+color_bun = "#FBF0DF"
+color_c = "#A9BACD"
+color_cobol = "#BEDBDF"
+color_crystal = "#EDEDED" # color_foreground_light
+color_daml = "#3C73F7"
+color_dart = "#32BBF9"
+color_deno = "#12124B"
+color_dotnet = "#4A35CC"
+color_elixir = "#4E2A8E"
+color_elm = "#1293D8"
+color_erlang = "#8C032F"
+color_fennel = "#448F22"
+color_golang = "#7FD5EA"
+color_haskell = "#8F4E8B"
+color_haxe ="#EA8220"
+color_java = "#ED8B00"
+color_julia = "#4063D8"
+color_kotlin = "#7F52FF"
+color_lua = "#000D7B"
+color_nim = "#FFE953"
+color_nodejs = "#005F00"
+color_ocaml = "#F48B32"
+color_perl = "#0073A1"
+color_php = "#4F5B93"
+color_purescript = "#1D222D"
+color_python = "#EBD45B"
+color_raku = "#ACB81D"
+color_red = "#E01B15"
+color_rlang = "#2568BB"
+color_ruby = "#CC342D"
+color_rust = "#A72145"
+color_scala = "#C22D40"
+color_swift = "#F05138"
+color_vlang = "#4A607E"
+color_zig = "#F7A41D"
+## Package colors
+color_buf = "#77E1FF"
+color_cmake = "#064F8D"
+color_conda = "#43B02A"
+color_gradle = "#17A9CB"
+color_helm = "#0F1689"
+color_meson = "#39207C"
+color_package = "#6F6A70" # color_directory
+color_spack = "#0E3D7E"
+## Configuration shell modules
+color_guix = "#F4BB15"
+color_nix = "#27385D"
+
+## Generic prompt configurations
+[character] ### TODO: remove [ ](bg:color_background_base) and the space in the format section
+success_symbol = "[ ](bg:color_background_base)[](bg:color_base_green fg:color_background_base)[](fg:color_base_green)"
+error_symbol = "[ ](bg:color_background_base)[](bg:color_base_red fg:color_background_base)[](fg:color_base_red)"
+vicmd_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_green)[  ](bold bg:color_base_green fg:color_foreground_dark)[](bg:color_base_green fg:color_foreground_dark)"
+vimcmd_visual_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_yellow)[  ](bold bg:color_base_yellow fg:color_foreground_dark)[](bg:color_base_yellow fg:color_foreground_dark)"
+vimcmd_replace_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_orange)[  ](bold bg:color_base_orange fg:color_foreground_dark)[](bg:color_base_orange fg:color_foreground_dark)"
+vimcmd_replace_one_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_orange)[  ](bold bg:color_base_orange fg:color_foreground_light)[](bg:color_base_orange fg:color_foreground_dark)"
+format = "$symbol "
 
 [line_break]
 disabled = true
 
-# Module configurations
+### Module configurations
 [aws]
 # disabled = true
-symbol = " "
-style = "bg:#EC912D"
-format = '[[ ](bg:#464347 fg:#EC912D)$symbol$profile(\($region\))[](bg:#464347 fg:#EC912D)]($style)'
+symbol = "󰸏 " # nf-md-aws
+# symbol = " " # nf-weather-cloud
+style = "bg:color_aws fg:color_foreground_dark"
+expiration_symbol = ' '
+force_display = true
+format = '[$symbol$profile(\($region\))(\[$duration\])]($style)'
+
+[aws.region_aliases]
+
+[aws.profile_aliases]
+
+[azure]
+# disabled = false
+symbol = " " # nf-cod-azure
+# symbol = "󰠅 " # nf-md-microsoft_azure
+style = "bg:color_azure fg:color_foreground_dark"
+format = '[$symbol($subscription)]($style)'
 
 [battery]
 # disabled = true
-full_symbol = ""
-charging_symbol = " "
-discharging_symbol = " "
-unknown_symbol = ""
-empty_symbol = ""
-format = "[[ ](bg:#464347 fg:#FF5511)$symbol$percentage[](bg:#464347 fg:#FF5511)]($style)"
+full_symbol = "󰁹" # nf-md-battery
+charging_symbol = "󱊥 " # nf-md-battery_charging_medium
+discharging_symbol = "󱊡" # nf-md-battery_low
+unknown_symbol = "󰂑" # nf-md-battery_unknown
+empty_symbol = "󰂎" # nf-md-battery_outline
+format = "[$symbol$percentage]($style)"
 [[battery.display]]
 threshold = 10
-style = "bold bg:#FF5511 fg:#EEEEEE"
+style = "bold bg:color_base_red_light fg:color_foreground_light"
 [[battery.display]]
 threshold = 20
-style = "bg:#FF5511 fg:#111111"
+style = "bg:color_base_red_light fg:color_foreground_dark"
+[[battery.display]] # uncomment this section to always see your battery information
+threshold = 100
+style = "bg:color_base_red_light fg:color_foreground_light"
+
+[buf]
+# disabled = true
+symbol = " " # nf-fa-barcode
+style = "bg:color_buf fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[bun]
+# disabled = true
+symbol = " " # nf-oct-smiley
+style = "bg:color_bun fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[c]
+# disabled = true
+symbol = " " # nf-custom-c
+# symbol = "󰙱 " # nf-md-language_c
+# symbol = "C " # plain character
+style = "bg:color_c fg:color_foreground_dark"
+format = "[$symbol($version(-$name))]($style)"
 
 [cmake]
 # disabled = true
-# symbol = "卑" # alternate
-symbol = "喝"
-style = "bg:#064F8D fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#064F8D)$symbol$version[](bg:#464347 fg:#064F8D)]($style)"
+symbol = "󰔷 " # nf-md-triangle_outline
+# symbol = "󰔶 " # nf-md-triangle
+style = "bg:color_cmake fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [cmd_duration]
-# disabled = true
-style = "bg:#464347 fg:#FBDE2D"
-min_time = 2_000
+disabled = true
+style = "bg:color_background_base fg:color_base_yellow"
 show_milliseconds = true
-show_notifications = false
-min_time_to_notify = 45_000
-format = "[ 祥$duration]($style)"
+# show_notifications = true
+# notification_timeout = 60000
+format = "[ 󰔛 $duration]($style)"
+
+[cobol]
+# disabled = true
+symbol = " " # nf-fa-cog
+style = "bg:color_cobol fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
 
 [conda]
 # disabled = true
-symbol = " "
-style = "bg:#43B02A fg:#111111"
-ignore_base = true
-truncation_length = 1
-format = "[[ ](bg:#464347 fg:#43B02A)$symbol$environment[](bg:#464347 fg:#43B02A)]($style)"
+symbol = "🅒 " # Negative Circled Latin Capital Letter C
+# symbol = " " # nf-fa-circle_o
+style = "bg:color_conda fg:color_foreground_dark"
+# ignore_base = false
+# truncation_length = 0 # no truncation
+format = "[$symbol$environment]($style)"
+
+[container]
+# disabled = true
+symbol = "󰏖 " # nf-md-package_variant
+style = "bg:color_package fg:color_foreground_light dimmed"
+format = '[$symbol\[$name\]]($style)'
 
 [crystal]
 # disabled = true
-symbol = " "
-style = "bg:#EEEEEE fg:#111111"
-format = "[[ ](bg:#464347 fg:#EEEEEE)$symbol$version[](bg:#464347 fg:#EEEEEE)]($style)"
+symbol = " " # nf-custom-crystal
+# symbol = "󰬯" # nf-md-crystal_ball
+style = "bg:color_crystal fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[daml]
+# disabled = true
+symbol = "𝜦 " # Capital lambda - U+1D726
+style = "bg:color_daml fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
 
 [dart]
 # disabled = true
-symbol = " " # original
-# symbol = "﯑ " # clearer
-style = "bg:#32BBF9 fg:#111111"
-format = "[[ ](bg:#464347 fg:#32BBF9)$symbol$version[](bg:#464347 fg:#32BBF9)]($style)"
+symbol = " " # nf-dev-dart
+# symbol = " " # nf-seti-dart
+style = "bg:color_dart fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[deno]
+# disabled = true
+symbol = " " # nf-dev-javascript_badge
+style = "bg:color_deno fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [directory]
-style = "italic bg:#6F6A70 fg:#EEEEEE"
-read_only = ""
-read_only_style = "bg:#ff3322 fg:#EEEEEE"
-truncation_length = 4
-truncate_to_repo = true
-# truncation_symbol = "…"
-# fish_style_pwd_dir_length = 3
-format = "([[ ](bg:#464347 fg:#ff3322)$read_only[](bg:#464347 fg:#ff3322)]($read_only_style))[[ ](bg:#464347 fg:#6F6A70)$path[](bg:#464347 fg:#6F6A70)]($style)"
+# disabled = true
+## If you change the home_symbol, you need the change the directory.substitutions below, as well
+home_symbol = " " # nf-seti-home
+# home_symbol = "󰮧" # nf-md-home_variant_outline
+# home_symbol = "" # nf-oct-home
+# home_symbol = "" # nf-cod-home
+read_only = " " # nf-fa-lock
+style = "italic bg:color_directory fg:color_foreground_light"
+read_only_style = "bg:color_base_red fg:color_foreground_light"
+# before_repo_root_style = "italic bg:color_directory_repo_before fg:color_foreground_light"
+repo_root_style = "italic bold bg:color_directory fg:color_foreground_light"
+# truncate_to_repo = false
+truncation_length = 4 # default = 3
+truncation_symbol = "… " # default = ""
+# fish_style_pwd_dir_length = 3 # default = 0
+# use_logical_path = false
+# use_os_path_sep = false
+format = "([ ](bg:color_background_base fg:color_base_red)[$read_only]($read_only_style)[](bg:color_background_base fg:color_base_red))[ ](bg:color_background_base fg:color_directory)[$path]($style)[](bg:color_background_base fg:color_directory)"
+repo_root_format = """\
+    ([ ](bg:color_background_base fg:color_base_red)[$read_only]($read_only_style)[](bg:color_background_base fg:color_base_red))\
+    [ ](bg:color_background_base fg:color_directory)\
+    [$repo_root]($repo_root_style)\
+    [$path]($style)\
+    [](bg:color_background_base fg:color_directory)\
+"""
 
 [directory.substitutions]
-"~/Documents" = ""
-"~/Music" = ""
-"~/Movies" = ""
-"~/Pictures" = ""
-"~/Sources" = ""
-"~" = " "
+" /Documents" = "󰈚 " # nf-md-text_box
+" /Downloads" = " " # nf-fa-download
+" /Music" = "" # nf-fa-music
+# " /Music" = "󰝚 " # nf-md-music
+" /Movies" = "󰿎 " # nf-md-movie_open
+# " /Movies" = "" # nf-fa-video_camera
+" /Pictures" = "" # nf-fa-image
+# " /Pictures" = "󰔉 " # nf-md-image_filter_hdr
+" /Sources" = "󰗀" # nf-md-xml
+# " /Sources" = "" # nf-dev-opensource
+# " /Sources" = "" # nf-cod-code
 "/" = "  "
 
 [docker_context]
 # disabled = true
-symbol = " "
-style = "bg:#3A91DC  fg:#EEEEEE"
-only_with_files = true
-format = "[[ ](bg:#464347 fg:#3A91DC)$symbol$context[](bg:#464347 fg:#3A91DC)]($style)"
+symbol = " " # nf-linux-docker
+# symbol = " " # nf-seti-docker
+style = "bg:color_docker fg:color_foreground_light"
+# only_with_files = false
+format = "[$symbol$context]($style)"
 
 [dotnet]
 # disabled = true
-symbol = " "
-style = "bg:#4A35CC fg:#EEEEEE"
+symbol = " " # nf-dev-dotnet
+style = "bg:color_dotnet fg:color_foreground_light"
 heuristic = true
-format = "[[ ](bg:#464347 fg:#4A35CC)$symbol$version( 什$tfm)[](bg:#464347 fg:#4A35CC)]($style)"
+format = "[$symbol($version)( 󰓾 $tfm)]($style)" # 󰓾 = nf-md-target
 
 [elixir]
 # disabled = true
-symbol = " "
-style = "bg:#4E2A8E fg:#EEEEEE"
-format = '[[ ](bg:#464347 fg:#4E2A8E)$symbol$version \(OTP:$otp_version\)[](bg:#464347 fg:#4E2A8E)]($style)'
+symbol = " " # nf-custom-elixir
+style = "bg:color_elixir fg:color_foreground_light"
+format = '[$symbol($version) (\(OTP:$otp_version\))]($style)'
 
 [elm]
 # disabled = true
-symbol = " " # original
-# symbol = " " # clearer
-style = "bg:#3E92D2 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#3E92D2)$symbol$version[](bg:#464347 fg:#3E92D2)]($style)"
+symbol = " " # nf-custom-elm
+# symbol = " " # nf-fae-tree
+style = "bg:color_elm fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
-[env_var]
+[env_var.FIRST] ## change to your likings
 disabled = true
-symbol = " "
-style = "bg:#6f6a70 fg:#EEEEEE"
-variable = "0"
-default = "fish"
-format = "([[ ](bg:#464347 fg:#6f6a70)$symbol$env_value[](bg:#464347 fg:#6f6a70)]($style))"
+symbol = "" # nf-fa-dollar
+style = "bg:color_env_var fg:color_foreground_dark"
+variable = "STARSHIP_CONFIG"
+default = " 󱃓 " # shows if not defined - nf-md-circle_off_outline
+format = "[$symbol$env_value]($style)"
 
 [erlang]
 # disabled = true
-symbol = " "
-style = "bg:#8C032F fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#8C032F)$symbol$version[](bg:#464347 fg:#8C032F)]($style)"
+symbol = " " # nf-dev-erlang
+style = "bg:color_erlang fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[fennel]
+# disabled = false
+symbol = "󰬍 " # nf-md-alpha_f_box
+# symbol = " " # nf-fa-smile_o
+style = "bg:color_fennel fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[fill]
+disabled = true
+symbol = ' '
+style = 'none'
+
+[fossil_branch]
+# disabled = false
+symbol = "󰘬" # nf-md-source_branch
+style = "bg:color_fossil fg:color_foreground_dark"
+# truncation_length = 4 # default = 9223372036854775807
+# truncation_symbol = "" # default = "…"
+format = "[$symbol$branch]($style) "
 
 [gcloud]
 # disabled = true
-symbol = "☁️ "
-style = "bg:#1A73E8 fg:#EEEEEE"
-format = '[[ ](bg:#464347 fg:#1A73E8)$symbol$account(\($region\))[](bg:#464347 fg:#1A73E8)]($style)'
+symbol = "󱇶 " # nf-md-google_cloud
+style = "bg:color_gcloud fg:color_foreground_light"
+format = '[$symbol$account(@$domain)(\($region\))]($style)'
+## other variables:
+##   active = The active config name written in ~/.config/gcloud/active_config
+##   project = The current GCP project
+
+[gcloud.region_aliases]
+
+[gcloud.project_aliases]
+
+[custom.giturl]
+# disabled = true
+description = "Display icon for remote Git server"
+command = """
+    GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+    if [[ "$GIT_REMOTE" =~ "github" ]]; then
+        # GIT_REMOTE_SYMBOL="" # nf-cod-github_inverted
+        GIT_REMOTE_SYMBOL="" # nf-fa-github
+    elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+        GIT_REMOTE_SYMBOL="" # nf-fa-gitlab
+    elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+        GIT_REMOTE_SYMBOL="" # nf-fa-bitbucket
+    elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+        GIT_REMOTE_SYMBOL="" # nf-fa-git_square
+    else
+        GIT_REMOTE_SYMBOL="󰊢 " # nf-md-git
+        # GIT_REMOTE_SYMBOL="" # nf-fa-unlink
+        # GIT_REMOTE_SYMBOL="󰜛" # nf-md-source_commit_local
+    fi
+    echo "$GIT_REMOTE_SYMBOL "
+"""
+require_repo = true
+when = true
+shell = ["bash", "--noprofile", "--norc"]
+format = "[$output ](bg:color_git_branch fg:color_foreground_dark)"
 
 [git_branch]
 # disabled = true
-symbol = " "
-# symbol = " " # alternate
-style = "bg:#96ab5f fg:#111111"
-# truncation_length = 4
-# truncation_symbol = ""
-format = "[[ ](bg:#464347 fg:#96ab5f)$symbol$branch[](bg:#464347 fg:#96ab5f)]($style)"
+symbol = "" # nf-oct-git_branch
+# symbol = "󰊢 " # nf-md-git
+style = "bg:color_git_branch fg:color_foreground_dark"
+# always_show_remote = true
+# truncation_length = 4 # default = 9223372036854775807
+# truncation_symbol = "" # default = "…"
+# only_attached = true
+# ignore_branches = ["main", "master"]
+format = "[$symbol $branch(:$remote_name)]($style)"
+## other variables:
+##   remote_branch = The name of the branch tracked on remote_name
 
 [git_commit]
 # disabled = true
-style = "bg:#E58F73 fg:#111111"
-commit_hash_length = 4
-# only_detached = true
-format = "[[ ](bg:#464347 fg:#E58F73)#$hash[](bg:#464347 fg:#E58F73)]($style)"
+style = "bg:color_git_commit fg:color_foreground_dark"
+commit_hash_length = 4 # default = 7
+# only_detached = false
+tag_disabled = false
+tag_symbol = "󰓹 " # nf-md-tag
+# tag_max_candidates = 0
+format = "[ $hash $tag]($style)" #  = nf-fa-hashtag
+
+[git_metrics]
+# disabled = false
+added_style = 'bg:color_git_metrics fg:color_foreground_light'
+deleted_style = 'bg:color_git_metrics fg:color_foreground_light'
+# only_nonzero_diffs = false
+# format = '([󰺪 $added]($added_style))([ 󰺨 $deleted]($deleted_style))' # 󰺪 = nf-md-text_box_plus // 󰺨 = nf-md-text_box_minus
+format = '([󰺪 ](bg:color_git_metrics fg:color_git_metrics_added)[$added]($added_style))([ 󰺨 ](bg:color_git_metrics fg:color_git_metrics_deleted)[$deleted]($deleted_style))' # 󰺪 = nf-md-text_box_plus // 󰺨 = nf-md-text_box_minus
 
 [git_state]
 # disabled = true
-style = "bg:#E0B25D fg:111111"
+style = "bg:color_git_state fg:color_foreground_dark"
 rebase = "rebasing"
 merge = "merging"
 revert = "reverting"
-cherry_pick = " picking"
+cherry_pick = " picking" # nf-fae-cherry
 bisect = "bisecting"
 am = "am'ing"
 am_or_rebase = "am/rebase"
-format = '\([[ ](bg:#464347 fg:#E0B25D)$state($progress_current/$progress_total)[](bg:#464347 fg:#E0B25D)]($style)\)'
+format = '[$state($progress_current/$progress_total)]($style)'
 
 [git_status]
 # disabled = true
-style = "bg:#E0B25D fg:#000000"
-stashed = " ${count}"
-ahead = "ﲗ ${count}"
-behind = "ﲔ ${count}"
-diverged = "李 ${ahead_count} ${behind_count}"
-conflicted = "${count}"
-deleted = " ${count}"
-renamed = "﫦${count}"
-modified = " 凜${count}"
-staged = "  ${count}"
-untracked = "  ${count}"
-format = "([[ ](bg:#464347 fg:#E0B25D)$stashed$staged$modified$renamed$untracked$deleted$conflicted$ahead_behind[](bg:#464347 fg:#E0B25D)]($style))"
+style = "bg:color_git_status fg:color_foreground_dark"
+staged = " ${count}" # nf-fa-check
+modified = "  ${count}" # nf-fa-edit
+# modified = "  ${count}" # nf-fa-pencil
+renamed = "󰗧 ${count}" # nf-md-cursor_text
+untracked = "  ${count}" # nf-fa-question
+deleted = "  ${count}" # nf-fa-remove
+conflicted = " ${count}" # nf-fa-flag
+stashed = "  ${count}" # nf-fa-bank
+# stashed = "  ${count}" # nf-fa-inbox
+up_to_date = ""
+ahead = "󰞙 ${count}" # nf-md-arrow_expand_up
+behind = "󰞖 ${count}" # nf-md-arrow_expand_down
+diverged = "󰡏 ${ahead_count} ${behind_count}" # nf-md-arrow_expand_vertical
+# diverged = "󰯎 ${ahead_count} ${behind_count}" # nf-md-swap_vertical_bold
+# ignore_submodules = true
+format = "[($staged$modified$renamed$untracked$deleted$conflicted$stashed$ahead_behind )]($style)"
 
 [golang]
 # disabled = true
-symbol = " "
-style = "bg:#7FD5EA fg:#111111"
-format = "[[ ](bg:#464347 fg:#7FD5EA)$symbol$version[](bg:#464347 fg:#7FD5EA)]($style)"
+symbol = " " # nf-seti-go
+# symbol = "󰟓 " # nf-md-language_go
+style = "bg:color_golang fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[gradle]
+# disabled = true
+symbol = " " # nf-seti-gradle
+# symbol = "󰟆 " # nf-md-elephant
+style = "bg:color_gradle fg:color_foreground_dark"
+# recursive = true
+format = "[$symbol($version)]($style)"
+
+[guix_shell]
+# disabled = true
+symbol = " " # nf-linux-gnu_guix
+# symbol = "󰆚 " # nf-md-cow
+style = "bg:color_guix fg:color_foreground_dark"
+format = '[$symbol]($style)[shell]($style)'
+
+[haskell]
+# disabled = true
+symbol = " " # nf-seti-haskell
+# symbol = "[λ](bold bg:color_haskell fg:color_foreground_dark)" # Small greek lambda - U+03BB
+style = "bg:color_haskell fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+## other variables:
+##   snapshot = Currently selected Stack snapshot
+##   ghc_version = Currently installed GHC version
+
+[haxe]
+# disabled = true
+symbol = " " # nf-seti-haxe
+# symbol = "󰐴 " # nf-md-quadcopter
+style = "bg:color_haxe fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
 
 [helm]
 # disabled = true
-symbol = "ﴱ "
-style = "bg:#0F1689 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#0F1689)$symbol$version[](bg:#464347 fg:#0F1689)]($style)"
+symbol = "󰠳 " # nf-md-ship_wheel
+style = "bg:color_helm fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [hostname]
-# disabled = true
-style = "bg:#AFD700 fg:#111111"
+disabled = true
+style = "bg:color_hostname fg:color_foreground_light"
+ssh_symbol = "󰱠 " # nf-md-console_network_outline
 # ssh_only = false
 trim_at = "."
-format = "[[ ](bg:#464347 fg:#AFD700)($style)$hostname[](bg:#464347 fg:#AFD700)]($style)"
+format = "[($ssh_symbol)$hostname]($style)"
 
 [java]
 # disabled = true
-symbol = " "
-style = "bg:#ED8B00 fg:#111111"
-format = "[[ ](bg:#464347 fg:#ED8B00)$symbol$version[](bg:#464347 fg:#ED8B00)]($style)"
+symbol = " " # nf-fae-java
+style = "bg:color_java fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
 
 [jobs]
 # disabled = true
-symbol = "  "
-style = "bold bg:#464347 fg:#FFA200"
-# threshold = 1
+symbol = "  " # nf-fa-list
+style = "bold bg:color_background_base fg:color_base_orange"
+# symbol_threshold = 1 # default
+# number_threshold = 2 # default
 format = "[$symbol$number]($style)"
 
 [julia]
 # disabled = true
-symbol = " "
-style = "bg:#4063D8 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#4063D8)$symbol$version[](bg:#464347 fg:#4063D8)]($style)"
+symbol = " " # nf-seti-julia
+style = "bg:color_julia fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[kotlin]
+# disabled = true
+symbol = "󱈙 " # nf-md-language_kotlin
+style = "bg:color_kotlin fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [kubernetes]
 disabled = false
-symbol = "☸︎"
-style = "bg:#3371E3 fg:#EEEEEE"
-format = '[[ ](bg:#464347 fg:#3371E3)$symbol$context(\($namespace\))[](bg:#464347 fg:#3371E3)]($style)'
+symbol = "󱃾 " # nf-md-kubernetes
+style = "bg:color_kubernetes fg:color_foreground_light"
+format = '[$symbol$context(\($namespace\))]($style)'
+## other variables:
+##   cluster = contains the current kubernetes cluster
+##   user = contains the current kubernetes user
+
+[kubernetes.context_aliases]
+
+[kubernetes.user_aliases]
+
+[localip]
+# disabled = false
+style = "bg:color_background_base fg:color_base_orange"
+# ssh_only = false
+format = "[ 󰩠 $localipv4]($style)" # 󰩠 = nf-md-ip_network
+
+[lua]
+# disabled = true
+symbol = "󰢱 " # nf-md-language_lua
+style = "bg:color_lua fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [memory_usage]
 # disabled = false
-symbol = " "
-style = "bg:#BBBBBB fg:#111111"
-threshold = 75
-format = "([[ ](bg:#464347 fg:#BBBBBB)$symbol$ram(:$swap)[](bg:#464347 fg:#BBBBBB)]($style))"
+symbol = "󰍛 " # nf-md-memory
+style = "bg:color_memory fg:color_foreground_dark"
+# threshold = 75 # default
+format = "[$symbol$ram(:$swap)]($style)"
+## other variables:
+##   ram_pct = The percentage of the current system memory
+##   swap_pct = The swap memory percentage of the current system swap memory file
 
 # Mercurial
 [hg_branch]
 disabled = false
-symbol = " "
-style = "bg:#96ab5f fg:#111111"
-# truncation_length = 8 # default = 2^63 - 1
-# truncation_symbol = "…"
-format = "[[ ](bg:#464347 fg:#96ab5f)$symbol$branch[](bg:#464347 fg:#96ab5f)]($style)"
+symbol = "󰘬" # nf-md-source_branch
+style = "bg:color_mercurial fg:color_foreground_dark"
+# truncation_length = 8 # default = 9223372036854775807
+# truncation_symbol = "" # default = "…"
+format = "[$symbol$branch]($style)"
+
+[meson]
+# disabled = true
+symbol = "󰔶 " # nf-md-triangle
+# symbol = "▲" # black up-pointing triangle
+style = "bg:color_meson fg:color_foreground_light"
+# truncation_length = 20 # default = 4294967295
+# truncation_symbol = "" # default = "…"
+format = "[$symbol$project]($style)"
 
 [nim]
 # disabled = true
-symbol = " "
-style = "bg:#FFE953 fg:#111111"
-format = "[[ ](bg:#464347 fg:#FFE953)$symbol$version[](bg:#464347 fg:#FFE953)]($style)"
+symbol = "" # nf-seti-nim
+# symbol = " " # nf-fae-crown
+style = "bg:color_nim fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
 
 [nix_shell]
 # disabled = true
-symbol = " "
-style = "bg:#27385D fg:#EEEEEE"
-impure_msg = '[\(impure\)](bg:#27385D fg:#FF5511)'
-pure_msg = '[\(pure\)](bg:#27385D fg:#AFD700)'
-format = '[[ ](bg:#464347 fg:#27385D)$symbol$name$state[](bg:#464347 fg:#27385D)]($style)'
+symbol = " " # nf-linux-nixos
+style = "bg:color_nix fg:color_foreground_light"
+impure_msg = '[](bg:color_nix fg:color_base_red_light)' # nf-weather-gale_warning - personal setting
+pure_msg = '[ ](bg:color_nix fg:color_base_green)' # nf-weather-day_sunny - personal setting
+# impure_msg = '[\(impure\)](bg:color_nix fg:color_base_red_light)'
+# pure_msg = '[\(pure\)](bg:color_nix fg:color_base_green)'
+unknown_msg = '[ ](bg:color_nix fg:color_base_green)' # nf-weather-na
+# heuristic = true
+format = '[$symbol$name]($style)[\($state\)](bg:color_nix fg:color_directory_repo_before)'
 
 [nodejs]
 # disabled = true
-symbol = " "
-style = "bg:#005F00 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#005F00)$symbol$version[](bg:#464347 fg:#005F00)]($style)"
+symbol = "󰎙 " # nf-md-nodejs
+style = "bg:color_nodejs fg:color_foreground_light"
+not_capable_style = "bg:color_nodejs fg:color_base_red"
+format = "[$symbol($version)]($style)"
 
 [ocaml]
 # disabled = true
-symbol = "🐫 "
-style = "bg:#F48B32 fg:#111111"
-format = "[[ ](bg:#464347 fg:#F48B32)$symbol$version[](bg:#464347 fg:#F48B32)]($style)"
+symbol = " " # nf-seti-ocaml
+style = "bg:color_ocaml fg:color_foreground_dark"
+format = '[$symbol($version)( \($switch_indicator$switch_name\))]($style)'
+
+[opa]
+# disabled = true
+symbol = "󱅧 " # nf-md-police_badge
+# symbol = "󱢼 " # nf-md-shield_crown
+style = "bg:color_opa fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[openstack]
+# disabled = true
+symbol = " " # nf-weather-cloud
+style = "bg:color_openstack fg:color_foreground_light"
+format = '[$symbol$cloud(\($project\))]($style)'
+
+[os]
+# disabled = false
+style = "bg:color_os fg:color_foreground_dark"
+# format = '[$symbol(v$version)(  $edition)(  $codename)(  $type)]($style)[](bg:color_background_base fg:color_os)'
+## uncomment the format above for all available information and comment out the line below
+format = '[$symbol]($style)[](bg:color_background_base fg:color_os)'
+## other variables:
+##   name = The current operating system name
+##   type = The current operating system type
+##   codename = The current operating system codename, if applicable
+##   edition = The current operating system edition, if applicable
+##   version = The current operating system version, if applicable
+
+[os.symbols]
+Alpaquita = " " # nf-fa-bell
+Alpine = " " # nf-linux-alpine
+Amazon = " " # nf-fa-amazon
+Android = " " # nf-dev-android
+Arch = " " # nf-linux-archlinux
+Artix = " " # nf-linux-artix
+CentOS = " " # nf-linux-centos
+Debian = " " # nf-linux-debian
+DragonFly = " " # nf-fae-butterfly
+Emscripten = " " # nf-fa-toggle_on
+EndeavourOS = " " # nf-linux-endeavour
+Fedora = " " # nf-linux-fedora
+FreeBSD = " " # nf-linux-freebsd
+Garuda = "󰛓 " # nf-md-feather
+Gentoo = " " # nf-linux-gentoo
+HardenedBSD = "󰔇  " # nf-md-tennis_ball
+Illumos = " " # nf-linux-illumos
+Linux = " " # nf-linux-tux
+Mabox = "󰆦  " # nf-fa-cube
+Macos = " " # nf-linux-apple
+Manjaro = " " # nf-linux-manjaro
+Mariner = " " # nf-fa-life_saver
+MidnightBSD = " " # nf-fa-moon_o
+Mint = "󰣭  " # nf-md-linux_mint
+NetBSD = " " # nf-fa-flag
+NixOS = " " # nf-linux-nixos
+OpenBSD = " " # nf-linux-openbsd
+OpenCloudOS = " " # nf-fa-cloud
+openEuler = "󰏒  " # nf-md-owl
+openSUSE = " " # nf-linux-opensuse
+OracleLinux = "󰌷  " # nf-md-link
+Pop = " " # nf-linux-pop_os
+Raspbian = " " # nf-linux-raspberry_pi
+Redhat = "󱄛 " # nf-md-redhat
+RedHatEnterprise = " " # nf-linux-redhat
+Redox = "󰀘  " # nf-md-orbit
+Solus = " " # nf-linux-solus
+SUSE = " " # nf-linux-opensuse
+Ubuntu = " " # nf-linux-ubuntu
+Unknown = " " # nf-fa-question_circle
+Windows = " " # nf-fa-windows
 
 [package]
 # disabled = true
-symbol = " "
-style = "bg:#6F6A70 fg:#EEEEEE"
-display_private = false
-format = "[[ ](bg:#464347 fg:#6F6A70)$symbol$version[](bg:#464347 fg:#6F6A70)]($style)"
+symbol = " " # nf-oct-package
+style = "bg:color_package fg:color_foreground_light"
+display_private = true
+format = "[$symbol($version)]($style)"
 
 [perl]
 # disabled = true
-symbol = "🐪 "
-style = "bg:#0073A1 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#0073A1)$symbol$version[](bg:#464347 fg:#0073A1)]($style)"
+symbol = " " # nf-seti-perl
+# symbol = " " # nf-dev-perl
+style = "bg:color_perl fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [php]
 # disabled = true
-symbol = " "
-style = "bg:#8892BF fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#8892BF)$symbol$version[](bg:#464347 fg:#8892BF)]($style)"
+symbol = " " # nf-dev-php
+# symbol = "󰌟 " # nf-md-language_php
+# symbol = "" # nf-seti-php
+style = "bg:color_php fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[pijul_channel]
+# disabled = false
+symbol = "󰘬" # nf-md-source_branch
+style = "bg:color_pijul_channel fg:color_foreground_light"
+# truncation_length = 4 # default = 9223372036854775807
+# truncation_symbol = "" # default = "…"
+format = "[$symbol$channel]($style) "
+
+[pulumi]
+# disabled = true
+symbol = " " # nf-fa-cube
+style = "bg:color_pulumi fg:color_foreground_light"
+search_upwards = true
+# format = '[$symbol($version) ($username@)$stack]($style)'
+## uncomment the format above to also see the version and comment out the line below
+format = "[$symbol($username@)$stack]($style)"
 
 [purescript]
 # disabled = true
-symbol = "<=>"
-style = "bg:#1D222D fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#1D222D)$symbol$version[](bg:#464347 fg:#1D222D)]($style)"
+symbol = " " # nf-custom-purescript
+# symbol = "⇔ " # left right double arrow - U+21D4
+style = "bg:color_purescript fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [python]
 # disabled = true
-symbol = " "
-style = "bg:#EBD45B fg:#111111"
+symbol = "󰌠 " # nf-md-language_python
+# symbol = " " # nf-fae-python
+style = "bg:color_python fg:color_foreground_dark"
+python_binary = [ "python3", "python", "python2" ]
 # pyenv_version_name = true
-pyenv_prefix = "pyenv "
-python_binary = "python3"
-scan_for_pyfiles = true
-format = '[[ ](bg:#464347 fg:#EBD45B)$symbol$pyenv_prefix$version(\($virtualenv\))[](bg:#464347 fg:#EBD45B)]($style)'
+# pyenv_prefix = "pyenv " # default
+format = '[${symbol}(${pyenv_prefix}${version})(\($virtualenv\))]($style)'
+
+[raku]
+# disabled = true
+symbol = " " # nf-fae-butterfly
+style = "bg:color_raku fg:color_foreground_light"
+format = "[$symbol($version)(-$vm_version)]($style)"
+
+[red]
+# disabled = true
+symbol = "󱥒 " # nf-md-pyramid
+style = "bg:color_red fg:color_foreground_dark"
+format = "[$symbol($version)]($style)"
+
+[rlang]
+# disabled = true
+symbol = "󰟔 " # nf-md-language_r
+style = "bg:color_rlang fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [ruby]
 # disabled = true
-symbol = " "
-# symbol = " " # alternate
-style = "bg:#CC342D fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#CC342D)$symbol$version[](bg:#464347 fg:#CC342D)]($style)"
+symbol = "󰴭 " # nf-md-language_ruby
+# symbol = " " # nf-fae-ruby
+# symbol = " " # nf-oct-ruby
+style = "bg:color_ruby fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [rust]
 # disabled = true
-symbol = " "
-# symbol = " " # alternate
-style = "bg:#A72145 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#A72145)$symbol$version[](bg:#464347 fg:#A72145)]($style)"
+symbol = "󱘗 " # nf-md-language_rust
+style = "bg:color_rust fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[scala]
+# disabled = true
+symbol = " " # nf-dev-scala
+style = "bg:color_scala fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[shell]
+disabled = false
+bash_indicator = '\$_'
+fish_indicator = "" # Empty string as Fish Shell is my default shell
+# fish_indicator = "⋖⋗⋖"
+zsh_indicator = "%_"
+powershell_indicator = "" # nf-seti-powershell
+ion_indicator = '(\$_)'
+elvish_indicator = "󰘧" # nf-md-lambda
+tcsh_indicator = "󰇥 " # nf-md-duck
+nu_indicator = "[󰥭](fg:color_base_green)" # nf-md-greater_than
+xonsh_indicator = "🐚" # seashell emoji
+cmd_indicator = "" # nf-cod-terminal_cmd
+unknown_indicator = " " # nf-fa-question_circle
+style = "bg:color_foreground_dark fg:color_foreground_light"
+format = "[$indicator]($style)"
 
 [shlvl]
-# disabled = false
-symbol = ""
-style = "bold bg:#464347 fg:#FBDE2D"
-# threshold = 2
+disabled = false
+symbol = " " # nf-fa-level_up
+style = "bold bg:color_background_base fg:color_shell_level"
+# repeat = true
+# threshold = 3 # default = 2
 format = "[$symbol$shlvl]($style)"
 
-[singularity]
+[singularity] # now Apptainer
 # disabled = true
-symbol = "S"
-style = "bg:#1D315F fg:#EEEEEE"
-format = '[[ ](bg:#464347 fg:#1D315F)$symbol\[$env\][](bg:#464347 fg:#1D315F)]($style)'
+symbol = "󰰣 " # nf-md-alpha_s_circle_outline
+style = "bg:color_singularity fg:color_foreground_light"
+format = '[$symbol\[$env\]]($style)'
 
-[swift]
+[spack]
 # disabled = true
-symbol = "ﯣ "
-style = "bg:#F05138 fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#F05138)$symbol$version[](bg:#464347 fg:#F05138)]($style)"
+symbol = "󰦻 " # nf-md-arrow_decision
+style = "bg:color_spack fg:color_foreground_light"
+# truncation_length = 0 # default = 1
+format = '[$symbol$environment]($style)'
 
 [status]
 # disabled = false
-symbol = ""
-style = "bg:#464347 fg:#ff3322"
+symbol = "" # nf-fa-exclamation
+success_symbol = ""
+not_executable_symbol = " " # nf-fa-times_circle
+not_found_symbol = " " # nf-fa-question_circle
+sigint_symbol = " " # nf-fa-stop_circle
+signal_symbol = "󰉁 " # nf-md-flash
+style = "bg:color_background_base fg:color_base_red"
+map_symbol = true
+# recognize_signal_code = false
+# pipestatus = true
+pipestatus_separator = "|"
+pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'
 format = "[$symbol$status]($style)"
 
-[terraform]
+[sudo]
 disabled = false
-symbol = "行"
-style = "bg:#5836CD fg:#EEEEEE"
-format = '[[ ](bg:#464347 fg:#5836CD)$symbol\($workspace\)[](bg:#464347 fg:#5836CD)]($style)'
-### uncomment the following, to see the version
-# format = "[[ ](bg:#464347 fg:#5836CD)$symbol$version($workspace)[](bg:#464347 fg:#5836CD)]($style)"
+symbol = " 󱫖 " # nf-md-timer_lock_open_outline
+style = "bg:color_base_red_light fg:color_foreground_light"
+# allow_windows = true
+format = "[$symbol]($style)"
+
+[swift]
+# disabled = true
+symbol = "󰛥 " # nf-md-language_swift
+# symbol = "" # nf-seti-swift
+style = "bg:color_swift fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[terraform]
+# disabled = true
+symbol = "󱁢 " # nf-md-terraform
+# symbol = " " # nf-seti-terraform
+style = "bg:color_terraform fg:color_foreground_light"
+# format = '[$symbol($version)\($workspace\)]($style)'
+## uncomment the format above to see the version and comment out the line below
+format = '[$symbol$workspace]($style)'
 
 [time]
-# disabled = false
-### color is set to orange, because of the configured time_range--to get your attention for e. g. R&R time ;)
-style = "bg:#FFA200 fg:#111111"
-use_12hr = false
+disabled = false
+## color is set to orange, to get ones attention for e. g. R&R time, based on the configured time_range ;)
+style = "bg:color_time fg:color_foreground_dark"
+# use_12hr = true
 time_format = "%H:%M"
-utc_time_offset = "local"
-time_range = "20:00:00-06:00:00"
-format = "[ $time[](bg:#464347 fg:#FFA200)]($style)"
+time_range = "20:00:00-06:00:00" # adjust the time rang to your liking or comment it out, to have it shown all the time
+format = "[ $time]($style)" #  = nf-oct-clock
 
 [username]
-# disabled = true
+disabled = true
 # show_always = true
-style_root = "bold bg:#3388FF fg:#FF5511"
-style_user = "bg:#3388FF fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#3388FF)$user[](bg:#464347 fg:#3388FF)]($style)"
+style_root = "bold bg:color_username fg:color_base_red_dark"
+style_user = "bg:color_username fg:color_foreground_light"
+format = "[$user]($style)"
+
+[vagrant]
+# disabled = true
+symbol = "⍱ " # apl functional symbol down caret tilde - U+2371
+style = "bg:color_vagrant fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[vcsh]
+# disabled = true
+symbol = "󰳏 " # nf-md-source_repository
+style = "bg:color_vcsh fg:color_foreground_light"
+format = "[$symbol$repo]($style)"
+
+[vlang]
+# disabled = true
+symbol = "󱑹 " # nf-md-cosine_wave
+style = "bg:color_vlang fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
 
 [zig]
 # disabled = true
-symbol = "［Z］"
-# symbol = "↯ " # alternate
-style = "bg:#F7A41D fg:#EEEEEE"
-format = "[[ ](bg:#464347 fg:#F7A41D)$symbol$version[](bg:#464347 fg:#F7A41D)]($style)"
-#EOF.
+symbol = " " # nf-seti-zig
+# symbol = '\[Z\] '
+style = "bg:color_zig fg:color_foreground_light"
+format = "[$symbol($version)]($style)"
+
+[custom.root]
+# disabled = true
+description = "Only display username, if sudo or different from standard user"
+style = "bold bg:color_base_red_light fg:color_foreground_light"
+command = "echo $USER"
+when = '[[ -z "$SSH_CONNECTION" ]] && ([[ -n "$SUDO_USER" ]] || [[ "$USER" != "$LOGNAME" ]])'
+shell = ["bash", "--noprofile", "--norc"]
+format = "[$output]($style)"
+
+[custom.ssh_user]
+# disabled = true
+description = "Display username, if on a ssh session, but not in tmux"
+style = "bg:color_username fg:color_foreground_light"
+command = "echo $USER"
+when = '([[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]) && ([[ "$USER" != "root" ]] && [[ -z "$SUDO_USER" ]] && [[ "$USER" == "$LOGNAME" ]])'
+shell = ["bash", "--noprofile", "--norc"]
+format = "[$output]($style)"
+
+[custom.ssh_root]
+# disabled = true
+description = "Display username on a ssh session, if different from standard user"
+style = "bold bg:color_base_red_light fg:color_foreground_light"
+command = "echo $USER"
+when = '[[ -n "$SSH_CONNECTION" ]] && ([[ "$USER" == "root" ]] || [[ -n "$SUDO_USER" ]] || [[ "$USER" != "$LOGNAME" ]])'
+shell = ["bash", "--noprofile", "--norc"]
+format = "[$output]($style)"
+
+[custom.ssh_host]
+# disabled = true
+description = "Display hostname if on a ssh session, but not inside a tmux session"
+style = "bg:color_hostname fg:color_foreground_dark bold"
+command = "uname -n"
+when = '[[ -n "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]]'
+shell = ["bash", "--noprofile", "--norc"]
+format = "[$output]($style)"

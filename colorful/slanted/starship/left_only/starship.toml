@@ -1,5 +1,5 @@
-# Myth Orange Pointed config for Starship
-# Copyright (c) 2020-2023 by Mick Hohamnn (@mickimnet), last changed: 2023-05-07 13:32
+# Myth Orange Slanted (left only) config for Starship
+# Copyright (c) 2020-2023 by Mick Hohamnn (@mickimnet), last changed: 2023-05-07 14:01
 # Note: comments for symbols refer to the class name of Nerd Fonts
 # Starship version support: 1.14.2
 "$schema" = 'https://starship.rs/config-schema.json'
@@ -18,87 +18,102 @@ palette = "myth-dark" # select the color palette to be used
 ### Order of modules on prompt
 format = """\
     $os\
-    [](bg:color_background_base fg:color_os)\
-    ([](bg:color_foreground_dark fg:color_background_base)$shell[](bg:color_background_base fg:color_foreground_dark))\
-    ([](bg:color_base_red_light fg:color_background_base)$sudo[](bg:color_background_base fg:color_base_red_light))\
-    ([](bg:color_base_red_light fg:color_background_base)${custom.root}[](bg:color_background_base fg:color_base_red_light))\
-    ([](bg:color_username fg:color_background_base)${custom.ssh_user}[](bg:color_background_base fg:color_username))\
-    ([](bg:color_base_red_light fg:color_background_base)${custom.ssh_root}[](bg:color_background_base fg:color_base_red_light))\
-    ([](bg:color_hostname fg:color_background_base)${custom.ssh_host}[](bg:color_background_base fg:color_hostname))\
-    ([](bg:color_username fg:color_background_base)$username[](bg:color_background_base fg:color_username))\
-    ([](bg:color_hostname fg:color_background_base)$hostname[](bg:color_background_base fg:color_hostname))\
+    ([ ](bg:color_background_base fg:color_foreground_dark)$shell[](bg:color_background_base fg:color_foreground_dark))\
+    ([ ](bg:color_background_base fg:color_base_red_light)$sudo[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_base_red_light)${custom.root}[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_username)${custom.ssh_user}[](bg:color_background_base fg:color_username))\
+    ([ ](bg:color_background_base fg:color_base_red_light)${custom.ssh_root}[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_hostname)${custom.ssh_host}[](bg:color_background_base fg:color_hostname))\
+    ([ ](bg:color_background_base fg:color_username)$username[](bg:color_background_base fg:color_username))\
+    ([ ](bg:color_background_base fg:color_hostname)$hostname[](bg:color_background_base fg:color_hostname))\
     (↓ Styling of the directory module is handled in the module section ↓)\
     ($directory)\
     (↓ Cloud provider modules ↓)\
-    ([](bg:color_aws fg:color_background_base)$aws[](bg:color_background_base fg:color_aws))\
-    ([](bg:color_azure fg:color_background_base)$azure[](bg:color_background_base fg:color_azure))\
-    ([](bg:color_gcloud fg:color_background_base)$gcloud[](bg:color_background_base fg:color_gcloud))\
-    ([](bg:color_openstack fg:color_background_base)$openstack[](bg:color_background_base fg:color_openstack))\
+    ([ ](bg:color_background_base fg:color_aws)$aws[](bg:color_background_base fg:color_aws))\
+    ([ ](bg:color_background_base fg:color_azure)$azure[](bg:color_background_base fg:color_azure))\
+    ([ ](bg:color_background_base fg:color_gcloud)$gcloud[](bg:color_background_base fg:color_gcloud))\
+    ([ ](bg:color_background_base fg:color_openstack)$openstack[](bg:color_background_base fg:color_openstack))\
     (↑ Cloud provider modules ↑)\
     (↓ Container modules ↓)\
-    ([](bg:color_kubernetes fg:color_background_base)$kubernetes[](bg:color_background_base fg:color_kubernetes))\
-    ([](bg:color_docker fg:color_background_base)$docker_context[](bg:color_background_base fg:color_docker))\
-    ([](bg:color_container fg:color_background_base)$container[](bg:color_background_base fg:color_container))\
-    ([](bg:color_opa fg:color_background_base)$opa[](bg:color_background_base fg:color_opa))\
-    ([](bg:color_pulumi fg:color_background_base)$pulumi[](bg:color_background_base fg:color_pulumi))\
-    ([](bg:color_singularity fg:color_background_base)$singularity[](bg:color_background_base fg:color_singularity))\
-    ([](bg:color_terraform fg:color_background_base)$terraform[](bg:color_background_base fg:color_terraform))\
-    ([](bg:color_vagrant fg:color_background_base)$vagrant[](bg:color_background_base fg:color_vagrant))\
+    ([ ](bg:color_background_base fg:color_kubernetes)$kubernetes[](bg:color_background_base fg:color_kubernetes))\
+    ([ ](bg:color_background_base fg:color_docker)$docker_context[](bg:color_background_base fg:color_docker))\
+    ([ ](bg:color_background_base fg:color_container)$container[](bg:color_background_base fg:color_container))\
+    ([ ](bg:color_background_base fg:color_opa)$opa[](bg:color_background_base fg:color_opa))\
+    ([ ](bg:color_background_base fg:color_pulumi)$pulumi[](bg:color_background_base fg:color_pulumi))\
+    ([ ](bg:color_background_base fg:color_singularity)$singularity[](bg:color_background_base fg:color_singularity))\
+    ([ ](bg:color_background_base fg:color_terraform)$terraform[](bg:color_background_base fg:color_terraform))\
+    ([ ](bg:color_background_base fg:color_vagrant)$vagrant[](bg:color_background_base fg:color_vagrant))\
     (↑ Container modules ↑)\
     (↓ Source control ↓)\
+    ([ ](bg:color_background_base fg:color_fossil)$fossil_branch[](bg:color_background_base fg:color_fossil))\
+    ([ ](bg:color_background_base fg:color_mercurial)$hg_branch[](bg:color_background_base fg:color_mercurial))\
+    ([ ](bg:color_background_base fg:color_pijul_channel)$pijul_channel[](bg:color_background_base fg:color_pijul_channel))\
+    ([ ](bg:color_background_base fg:color_git_branch)${custom.giturl})\
+    ([ ](bg:color_git_branch fg:color_foreground_dark)$git_branch[](bg:color_background_base fg:color_git_branch))\
+    ([ ](bg:color_git_branch fg:color_git_commit)$git_commit[](bg:color_background_base fg:color_git_commit))\
+    ([ ](bg:color_background_base fg:color_git_status)$git_status[](bg:color_background_base fg:color_git_status))\
+    ([ ](bg:color_background_base fg:color_git_state)$git_state[](bg:color_background_base fg:color_git_state))\
+    ([ ](bg:color_background_base fg:color_git_metrics)$git_metrics[](bg:color_background_base fg:color_git_metrics))\
+    ([ ](bg:color_background_base fg:color_vcsh)$vcsh[](bg:color_background_base fg:color_vcsh))\
     (↑ Source control ↑)\
     (↓ Toolchain version modules ↓)\
-    ([](bg:color_bun fg:color_background_base)$bun[](bg:color_background_base fg:color_bun))\
-    ([](bg:color_c fg:color_background_base)$c[](bg:color_background_base fg:color_c))\
-    ([](bg:color_cobol fg:color_background_base)$cobol[](bg:color_background_base fg:color_cobol))\
-    ([](bg:color_crystal fg:color_background_base)$crystal[](bg:color_background_base fg:color_crystal))\
-    ([](bg:color_daml fg:color_background_base)$daml[](bg:color_background_base fg:color_daml))\
-    ([](bg:color_dart fg:color_background_base)$dart[](bg:color_background_base fg:color_dart))\
-    ([](bg:color_deno fg:color_background_base)$deno[](bg:color_background_base fg:color_deno))\
-    ([](bg:color_dotnet fg:color_background_base)$dotnet[](bg:color_background_base fg:color_dotnet))\
-    ([](bg:color_elixir fg:color_background_base)$elixir[](bg:color_background_base fg:color_elixir))\
-    ([](bg:color_elm fg:color_background_base)$elm[](bg:color_background_base fg:color_elm))\
-    ([](bg:color_erlang fg:color_background_base)$erlang[](bg:color_background_base fg:color_erlang))\
-    ([](bg:color_fennel fg:color_background_base)$fennel[](bg:color_background_base fg:color_fennel))\
-    ([](bg:color_golang fg:color_background_base)$golang[](bg:color_background_base fg:color_golang))\
-    ([](bg:color_haskell fg:color_background_base)$haskell[](bg:color_background_base fg:color_haskell))\
-    ([](bg:color_haxe fg:color_background_base)$haxe[](bg:color_background_base fg:color_haxe))\
-    ([](bg:color_java fg:color_background_base)$java[](bg:color_background_base fg:color_java))\
-    ([](bg:color_julia fg:color_background_base)$julia[](bg:color_background_base fg:color_julia))\
-    ([](bg:color_kotlin fg:color_background_base)$kotlin[](bg:color_background_base fg:color_kotlin))\
-    ([](bg:color_lua fg:color_background_base)$lua[](bg:color_background_base fg:color_lua))\
-    ([](bg:color_nim fg:color_background_base)$nim[](bg:color_background_base fg:color_nim))\
-    ([](bg:color_nodejs fg:color_background_base)$nodejs[](bg:color_background_base fg:color_nodejs))\
-    ([](bg:color_ocaml fg:color_background_base)$ocaml[](bg:color_background_base fg:color_ocaml))\
-    ([](bg:color_perl fg:color_background_base)$perl[](bg:color_background_base fg:color_perl))\
-    ([](bg:color_php fg:color_background_base)$php[](bg:color_background_base fg:color_php))\
-    ([](bg:color_purescript fg:color_background_base)$purescript[](bg:color_background_base fg:color_purescript))\
-    ([](bg:color_python fg:color_background_base)$python[](bg:color_background_base fg:color_python))\
-    ([](bg:color_raku fg:color_background_base)$raku[](bg:color_background_base fg:color_raku))\
-    ([](bg:color_red fg:color_background_base)$red[](bg:color_background_base fg:color_red))\
-    ([](bg:color_rlang fg:color_background_base)$rlang[](bg:color_background_base fg:color_rlang))\
-    ([](bg:color_ruby fg:color_background_base)$ruby[](bg:color_background_base fg:color_ruby))\
-    ([](bg:color_rust fg:color_background_base)$rust[](bg:color_background_base fg:color_rust))\
-    ([](bg:color_scala fg:color_background_base)$scala[](bg:color_background_base fg:color_scala))\
-    ([](bg:color_swift fg:color_background_base)$swift[](bg:color_background_base fg:color_swift))\
-    ([](bg:color_vlang fg:color_background_base)$vlang[](bg:color_background_base fg:color_vlang))\
-    ([](bg:color_zig fg:color_background_base)$zig[](bg:color_background_base fg:color_zig))\
+    ([ ](bg:color_background_base fg:color_bun)$bun[](bg:color_background_base fg:color_bun))\
+    ([ ](bg:color_background_base fg:color_c)$c[](bg:color_background_base fg:color_c))\
+    ([ ](bg:color_background_base fg:color_cobol)$cobol[](bg:color_background_base fg:color_cobol))\
+    ([ ](bg:color_background_base fg:color_crystal)$crystal[](bg:color_background_base fg:color_crystal))\
+    ([ ](bg:color_background_base fg:color_daml)$daml[](bg:color_background_base fg:color_daml))\
+    ([ ](bg:color_background_base fg:color_dart)$dart[](bg:color_background_base fg:color_dart))\
+    ([ ](bg:color_background_base fg:color_deno)$deno[](bg:color_background_base fg:color_deno))\
+    ([ ](bg:color_background_base fg:color_dotnet)$dotnet[](bg:color_background_base fg:color_dotnet))\
+    ([ ](bg:color_background_base fg:color_elixir)$elixir[](bg:color_background_base fg:color_elixir))\
+    ([ ](bg:color_background_base fg:color_elm)$elm[](bg:color_background_base fg:color_elm))\
+    ([ ](bg:color_background_base fg:color_erlang)$erlang[](bg:color_background_base fg:color_erlang))\
+    ([ ](bg:color_background_base fg:color_fennel)$fennel[](bg:color_background_base fg:color_fennel))\
+    ([ ](bg:color_background_base fg:color_golang)$golang[](bg:color_background_base fg:color_golang))\
+    ([ ](bg:color_background_base fg:color_haskell)$haskell[](bg:color_background_base fg:color_haskell))\
+    ([ ](bg:color_background_base fg:color_haxe)$haxe[](bg:color_background_base fg:color_haxe))\
+    ([ ](bg:color_background_base fg:color_java)$java[](bg:color_background_base fg:color_java))\
+    ([ ](bg:color_background_base fg:color_julia)$julia[](bg:color_background_base fg:color_julia))\
+    ([ ](bg:color_background_base fg:color_kotlin)$kotlin[](bg:color_background_base fg:color_kotlin))\
+    ([ ](bg:color_background_base fg:color_lua)$lua[](bg:color_background_base fg:color_lua))\
+    ([ ](bg:color_background_base fg:color_nim)$nim[](bg:color_background_base fg:color_nim))\
+    ([ ](bg:color_background_base fg:color_nodejs)$nodejs[](bg:color_background_base fg:color_nodejs))\
+    ([ ](bg:color_background_base fg:color_ocaml)$ocaml[](bg:color_background_base fg:color_ocaml))\
+    ([ ](bg:color_background_base fg:color_perl)$perl[](bg:color_background_base fg:color_perl))\
+    ([ ](bg:color_background_base fg:color_php)$php[](bg:color_background_base fg:color_php))\
+    ([ ](bg:color_background_base fg:color_purescript)$purescript[](bg:color_background_base fg:color_purescript))\
+    ([ ](bg:color_background_base fg:color_python)$python[](bg:color_background_base fg:color_python))\
+    ([ ](bg:color_background_base fg:color_raku)$raku[](bg:color_background_base fg:color_raku))\
+    ([ ](bg:color_background_base fg:color_red)$red[](bg:color_background_base fg:color_red))\
+    ([ ](bg:color_background_base fg:color_rlang)$rlang[](bg:color_background_base fg:color_rlang))\
+    ([ ](bg:color_background_base fg:color_ruby)$ruby[](bg:color_background_base fg:color_ruby))\
+    ([ ](bg:color_background_base fg:color_rust)$rust[](bg:color_background_base fg:color_rust))\
+    ([ ](bg:color_background_base fg:color_scala)$scala[](bg:color_background_base fg:color_scala))\
+    ([ ](bg:color_background_base fg:color_swift)$swift[](bg:color_background_base fg:color_swift))\
+    ([ ](bg:color_background_base fg:color_vlang)$vlang[](bg:color_background_base fg:color_vlang))\
+    ([ ](bg:color_background_base fg:color_zig)$zig[](bg:color_background_base fg:color_zig))\
     (↑ Toolchain version modules ↑)\
     (↓ Package modules ↓)\
-    ([](bg:color_package fg:color_background_base)$package[](bg:color_background_base fg:color_package))\
-    ([](bg:color_buf fg:color_background_base)$buf[](bg:color_background_base fg:color_buf))\
-    ([](bg:color_cmake fg:color_background_base)$cmake[](bg:color_background_base fg:color_cmake))\
-    ([](bg:color_conda fg:color_background_base)$conda[](bg:color_background_base fg:color_conda))\
-    ([](bg:color_gradle fg:color_background_base)$gradle[](bg:color_background_base fg:color_gradle))\
-    ([](bg:color_helm fg:color_background_base)$helm[](bg:color_background_base fg:color_helm))\
-    ([](bg:color_meson fg:color_background_base)$meson[](bg:color_background_base fg:color_meson))\
-    ([](bg:color_spack fg:color_background_base)$spack[](bg:color_background_base fg:color_spack))\
+    ([ ](bg:color_background_base fg:color_package)$package[](bg:color_background_base fg:color_package))\
+    ([ ](bg:color_background_base fg:color_buf)$buf[](bg:color_background_base fg:color_buf))\
+    ([ ](bg:color_background_base fg:color_cmake)$cmake[](bg:color_background_base fg:color_cmake))\
+    ([ ](bg:color_background_base fg:color_conda)$conda[](bg:color_background_base fg:color_conda))\
+    ([ ](bg:color_background_base fg:color_gradle)$gradle[](bg:color_background_base fg:color_gradle))\
+    ([ ](bg:color_background_base fg:color_helm)$helm[](bg:color_background_base fg:color_helm))\
+    ([ ](bg:color_background_base fg:color_meson)$meson[](bg:color_background_base fg:color_meson))\
+    ([ ](bg:color_background_base fg:color_spack)$spack[](bg:color_background_base fg:color_spack))\
     (↑ Package modules ↑)\
-    ([](bg:color_memory fg:color_background_base)$memory_usage[](bg:color_background_base fg:color_memory))\
-    ([](bg:color_env_var fg:color_background_base)${env_var.FIRST}[](bg:color_background_base fg:color_env_var))\
+    ([ ](bg:color_background_base fg:color_memory)$memory_usage[](bg:color_background_base fg:color_memory))\
+    ([ ](bg:color_background_base fg:color_env_var)${env_var.FIRST}[](bg:color_background_base fg:color_env_var))\
+    ([ ](bg:color_background_base fg:color_base_red_light)$battery[](bg:color_background_base fg:color_base_red_light))\
+    ([ ](bg:color_background_base fg:color_time)$time[](bg:color_background_base fg:color_time))\
+    (↓ Configuration shell modules ↓)\
+    ([ ](bg:color_background_base fg:color_guix)$guix_shell[](bg:color_background_base fg:color_guix))\
+    ([ ](bg:color_background_base fg:color_nix)$nix_shell[](bg:color_background_base fg:color_nix))\
+    (↑ Configuration shell modules ↑)\
     (↑ above input line ↑)\
     (\
-        [](bg:none fg:color_background_base)\
+        [](bg:none fg:color_background_base)\
         $line_break\
     )\
     (↓ on input line ↓)\
@@ -108,27 +123,6 @@ format = """\
     ($jobs)\
     ($status)\
     ($character)\
-"""
-
-right_format = """
-    (\
-        [](bg:none fg:color_base_green)[](bg:color_base_green fg:color_background_base)\
-        ([](bg:color_background_base fg:color_guix)$guix_shell[](bg:color_guix fg:color_background_base))\
-        ([](bg:color_background_base fg:color_nix)$nix_shell[](bg:color_nix fg:color_background_base))\
-        ([](bg:color_background_base fg:color_vcsh)$vcsh[](bg:color_vcsh fg:color_background_base))\
-        ([](bg:color_background_base fg:color_fossil)$fossil_branch[](bg:color_fossil fg:color_background_base))\
-        ([](bg:color_background_base fg:color_mercurial)$hg_branch[](bg:color_mercurial fg:color_background_base))\
-        ([](bg:color_background_base fg:color_pijul_channel)$pijul_channel[](bg:color_pijul_channel fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_branch)${custom.giturl})\
-        ([ ](bg:color_git_branch fg:color_foreground_dark)$git_branch[](bg:color_git_branch fg:color_background_base))\
-        ([](bg:color_git_branch fg:color_git_commit)$git_commit[](bg:color_git_commit fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_status)$git_status[](bg:color_git_status fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_state)$git_state[](bg:color_git_state fg:color_background_base))\
-        ([](bg:color_background_base fg:color_git_metrics)$git_metrics[](bg:color_git_metrics fg:color_background_base))\
-        ([](bg:color_background_base fg:color_base_red_light)$battery[](bg:color_base_red_light fg:color_background_base))\
-        ([](bg:color_background_base fg:color_time)$time[](bg:color_time fg:color_background_base))\
-        [](bg:color_background_base fg:color_base_green)\
-    )\
 """
 
 [palettes.myth-dark]
@@ -231,13 +225,13 @@ color_guix = "#F4BB15"
 color_nix = "#27385D"
 
 ## Generic prompt configurations
-[character]
-success_symbol = "[](bg:color_base_green fg:color_background_base)[](fg:color_base_green)"
-error_symbol = "[](bg:color_base_red fg:color_background_base)[](fg:color_base_red)"
-vicmd_symbol = "[](bg:color_background_base fg:color_base_green)[  ](bold bg:color_base_green fg:color_foreground_dark)[](bg:color_base_green fg:color_foreground_dark)"
-vimcmd_visual_symbol = "[](bg:color_background_base fg:color_base_yellow)[  ](bold bg:color_base_yellow fg:color_foreground_dark)[](bg:color_base_yellow fg:color_foreground_dark)"
-vimcmd_replace_symbol = "[](bg:color_background_base fg:color_base_orange)[  ](bold bg:color_base_orange fg:color_foreground_dark)[](bg:color_base_orange fg:color_foreground_dark)"
-vimcmd_replace_one_symbol = "[](bg:color_background_base fg:color_base_orange)[  ](bold bg:color_base_orange fg:color_foreground_light)[](bg:color_base_orange fg:color_foreground_dark)"
+[character] ### TODO: remove [ ](bg:color_background_base) and the space in the format section
+success_symbol = "[ ](bg:color_background_base)[](bg:color_base_green fg:color_background_base)[](fg:color_base_green)"
+error_symbol = "[ ](bg:color_background_base)[](bg:color_base_red fg:color_background_base)[](fg:color_base_red)"
+vicmd_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_green)[  ](bold bg:color_base_green fg:color_foreground_dark)[](bg:color_base_green fg:color_foreground_dark)"
+vimcmd_visual_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_yellow)[  ](bold bg:color_base_yellow fg:color_foreground_dark)[](bg:color_base_yellow fg:color_foreground_dark)"
+vimcmd_replace_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_orange)[  ](bold bg:color_base_orange fg:color_foreground_dark)[](bg:color_base_orange fg:color_foreground_dark)"
+vimcmd_replace_one_symbol = "[ ](bg:color_background_base)[](bg:color_background_base fg:color_base_orange)[  ](bold bg:color_base_orange fg:color_foreground_light)[](bg:color_base_orange fg:color_foreground_dark)"
 format = "$symbol "
 
 [line_break]
@@ -278,9 +272,9 @@ style = "bold bg:color_base_red_light fg:color_foreground_light"
 [[battery.display]]
 threshold = 20
 style = "bg:color_base_red_light fg:color_foreground_dark"
-# [[battery.display]] # uncomment this section to always see your battery information
-# threshold = 100
-# style = "bg:color_base_red_light fg:color_foreground_light"
+[[battery.display]] # uncomment this section to always see your battery information
+threshold = 100
+style = "bg:color_base_red_light fg:color_foreground_light"
 
 [buf]
 # disabled = true
@@ -382,13 +376,13 @@ truncation_symbol = "… " # default = ""
 # fish_style_pwd_dir_length = 3 # default = 0
 # use_logical_path = false
 # use_os_path_sep = false
-format = "([](bg:color_base_red fg:color_background_base)[$read_only]($read_only_style)[](bg:color_background_base fg:color_base_red))[](bg:color_directory fg:color_background_base)[$path]($style)[](bg:color_background_base fg:color_directory)"
+format = "([ ](bg:color_background_base fg:color_base_red)[$read_only]($read_only_style)[](bg:color_background_base fg:color_base_red))[ ](bg:color_background_base fg:color_directory)[$path]($style)[](bg:color_background_base fg:color_directory)"
 repo_root_format = """\
-    ([](bg:color_base_red fg:color_background_base)[$read_only]($read_only_style)[](bg:color_background_base fg:color_base_red))\
-    [](bg:color_directory fg:color_background_base)\
+    ([ ](bg:color_background_base fg:color_base_red)[$read_only]($read_only_style)[](bg:color_background_base fg:color_base_red))\
+    [ ](bg:color_background_base fg:color_directory)\
     [$repo_root]($repo_root_style)\
     [$path]($style)\
-    [](bg:color_background_base fg:color_directory)\
+    [](bg:color_background_base fg:color_directory)\
 """
 
 [directory.substitutions]
@@ -750,9 +744,9 @@ format = '[$symbol$cloud(\($project\))]($style)'
 [os]
 # disabled = false
 style = "bg:color_os fg:color_foreground_dark"
-# format = '[$symbol(v$version)(  $edition)(  $codename)(  $type)]($style)'
+# format = '[$symbol(v$version)(  $edition)(  $codename)(  $type)]($style)[](bg:color_background_base fg:color_os)'
 ## uncomment the format above for all available information and comment out the line below
-format = '[$symbol]($style)'
+format = '[$symbol]($style)[](bg:color_background_base fg:color_os)'
 ## other variables:
 ##   name = The current operating system name
 ##   type = The current operating system type
