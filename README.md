@@ -48,21 +48,21 @@ The following modules are **shown in the preview** and are **disabled** in the `
 #### M.y.t.h. Colorful Pointed:
 
 with right prompt support (general):
-![M.y.t.h. Colorful Pointed with right prompt support](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-pointed-starship.png)
+![M.y.t.h. Colorful Pointed with right prompt support](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-pointed-general-starship.png)
 _Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 without right prompt support (left_only):
-![M.y.t.h. Colorful Pointed left side only](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-pointed-starship.png)
+![M.y.t.h. Colorful Pointed left side only](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-pointed-left_only-starship.png)
 _Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 #### M.y.t.h. Colorful Slanted:
 
 with right prompt support (general):
-![M.y.t.h. Colorful Slanted:](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-slanted-starship.png)
+![M.y.t.h. Colorful Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-slanted-general-starship.png)
 _Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 without right prompt support (left_only):
-![M.y.t.h. Colorful Slanted:](https://raw.githubusercontent.com/micck/myth-packages/master/screenshots/myth-prompt-themes/dark-slanted-starship.png)
+![M.y.t.h. Colorful Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-slanted-left_only-starship.png)
 _Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 ## Update history
