@@ -83,7 +83,7 @@ _Remark:_ the newline in between the prompts is just used for the preview. The c
 
 ## Thanks
 
-Very big thank you goes out to late [@elseym][siwa] for his invaluable support and feedback all the time. :black_heart: And thank you [@tom][tom] for always making time to listen to me and for your on point feedback. :yellow_heart:
+Very big thank you goes out to late [@elseym][siwa] for his invaluable support and feedback all the time. :black_heart: And thank you [@divb][divb] for always making time to listen to me and for your on point feedback. :yellow_heart:
 
 _Always have fun:sunny: in what you're doing and_ "DON'T PANIC"… :rocket:
 
@@ -120,4 +120,4 @@ _Always have fun:sunny: in what you're doing and_ "DON'T PANIC"… :rocket:
 [input]: https://input.djr.com
 
 [siwa]: https://github.com/elseym
-[tom]: …
+[divb]: https://github.com/divb
