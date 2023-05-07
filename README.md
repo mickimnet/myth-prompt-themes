@@ -1,9 +1,3 @@
----
-description: 
-type: 
-created: 2021-01-25
-modified: 2023-05-07
----
 # M.y.t.h.: prompt themes
 
 > "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][bookquote])
@@ -15,34 +9,34 @@ modified: 2023-05-07
 
 This will be a collection of prompt themes, for different prompt tools. Currently, supporting only [Starship][starship]. You can directly download an individual configuration or clone the whole repository to get all.
 
-The prompts are styled as a single-line prompt, based on the [Powerline style][powerline]. All symbols make use of [Nerd Fonts][nerdfonts], so you need a compatible font to see the symbols. The coloring requires a terminal with support for true color (24-bit). The configuration is tested with the [Nerd Font][nerdfonts] variants of FiraCode, Hack, and Victor (the configuration files include additional symbols if you don't like the defaults).
+The prompts are styled as a single-line prompt, based on the [Powerline style][powerline]. All symbols make use of [Nerd Fonts][nerdfonts], therefore you need a compatible font to see the symbols. The coloring requires a terminal with support for true color (24-bit). The configuration is tested with the [Nerd Font][nerdfonts] variants of [FiraCode][firacode], [Hack][hack], and [Victor][victor] (the configuration files include additional symbols if you don't like the defaults).
 
 ## Starship
 
 The configuration (aka theme) for [Starship][starship], covers **all** modules up to _Starship_ version 1.14.2. There are (currently) two variants: one (_general_) for shells with right prompt support ([cmd][cmd], [elvish][elvish], [Fish Shell][fish], [nushell][nushell], [xonsh][xonsh], [zsh][zsh]), and one for those which don't support it (called _left_only_).
 
-There are custom modules for _username_ and _hostname_, as I prefer different visibility in `tmux` sessions. Otherwise, they behave like the standard modules, meaning the _username_ is only shown if in a `ssh` session, or a different user (like root or different from `$LOGNAME`), and the _hostname_ is only shown in a `ssh` session. In a (remote) tmux session, the username is only shown if different from the login user, and the hostname is not shown at all. Because, both the username and the hostname are shown in my tmux status line.
+There are custom modules for _username_ and _hostname_, as I prefer different visibility in `tmux` sessions. Otherwise, they function like the standard modules, meaning the _username_ is only shown in a `ssh` session, or a different user (like root or different from `$LOGNAME`), and the _hostname_ is only shown in a `ssh` session. In a (remote) `tmux` session, the _username_ is only shown if different from the _login user_, and the _hostname_ is not shown at all. Because, both the _username_ and the _hostname_ are shown in my `tmux` status line.
 
-The `[directory]` module uses some substitutions for `~/Documents`, `~/Downloads`, `~/Music`, `~/Movies`, `~/Pictures`, `~/Sources` (check the `starship.toml` for more information) and also replaces the default path separator (`/`) with the powerline _light right arrow_ (`  `).
+The `[directory]` module uses some substitutions for `~/Documents`, `~/Downloads`, `~/Music`, `~/Movies`, `~/Pictures`, `~/Sources` (check the `starship.toml` for more information) and also replaces the default path separator (`/`) with the powerline _light right arrow_ (` ＞ `).
 
-The `[shell]` module is only visible, if different from the standard shell. My main shell is the [Fish Shell][fish], therefore no additional information is shown. You can change that in the `[shell]` module section in the `starship.toml` file.
+The `[shell]` module is meant to be only visible, if different from the standard shell. My main shell is the [Fish Shell][fish], therefore no additional information is shown. You can change that in the `[shell]` module section in the `starship.toml` file.
 
-Currently, the modules, which are enabled, are based on my personal preferences (see the #preview section for more information). You can use `starship config module_name.disable false` or `starship config module_name.disable true` to change that. If you're wondering what modules are shown and why, you can always use `starship explain` for that.
+Currently, the modules, which are enabled, are based on my personal preferences (see the [preview](https://github.com/mickimnet/myth-prompt-themes#preview) section for more information). You can use `starship config module_name.disable false` or `starship config module_name.disable true` to change it. If you're wondering what modules are shown and why, you can always use `starship explain`.
 
 If you don't like the symbols, I've included alternative symbols in the `starship.toml`. If you would like to have a newline before the prompt, use `starship config add_newline true`.
 
 ### Preview
 
-The preview images are done with [iTerm](iterm) on _macOS_, and the font used is a patched [Input][input] font (to include _Nerd Font_ support and to add ligatures).
+The preview images are made on _macOS_ with [iTerm](iterm), and a patched [Input][input] font (to include _Nerd Font_ support and to add ligatures).
 
 The following modules are **shown in the preview** and are **disabled** in the `starship.toml` configuration files (list is in order of appearance):
-- **Memory** (seen in the _home_ directory where the user is _root_)**:** to enable use `starship config memory_usage.disabled false`.
+- **Memory** (seen in the _home_ directory, where the user is _root_)**:** to enable use `starship config memory_usage.disabled false`.
 - **OS** (seen in the _home_ & _infra_ directories)**:** to enable use `starship config os.disabled false`.
 - **Battery** (seen in the _nothings/gonna/stop/us/now_ directory)**:** is only shown if less than 20%. If you always want to show it, uncomment the section in the `starship.toml` file.
-- **Time** (seen in the _nothings/gonna/stop/us/now_ directory)**:** is only shown between 8 pm and 6 am--to remind you about R&R time :sunglasses: If you always want to show it, comment the `time_range` line in the `starship.toml` file out.
-- **Status** (seen in the _starbase_ directory)**:** to enable use `starship config os.disabled false`. The `[character]` module (the green pointed arrow) turns red if the shell exit code is not `0`. The `[status]` module shows additional information.
+- **Time** (seen in the _nothings/gonna/stop/us/now_ directory)**:** is only shown between 8 pm and 6 am--to remind you about R&R time :sunglasses: If you always want to see it, comment the `time_range` line in the `starship.toml` file out.
+- **Status** (seen in the _starbase_ directory)**:** to enable use `starship config status.disabled false`. The `[character]` module (the green pointed arrow) turns red if the shell exit code is not `0`. The `[status]` module shows additional information.
 - **Git Metrics** (seen in the _elixir_ and _node_ directories)**:** to enable use `starship config git_metrics.disabled false`.
-- **Shell** (seen in the _go_ directory)**:** my default shell is the [Fish Shell][fish], therefore only any other shells are shown. See the `[shell]` section in `starship.toml` for further information and to change or adapt to your liking.
+- **Shell** (seen in the _go_ directory)**:** my default shell is the [Fish Shell][fish], therefore only other shells are shown. See the `[shell]` section in `starship.toml` for further information and to change or adapt to your liking.
 - **Command duration** (seen in the _python-project_ directory): to enable use `starship config cmd_duration.disabled false`.
 
 #### M.y.t.h. Colorful Pointed:
@@ -111,6 +105,10 @@ _Always have fun:sunny: in what you're doing and_ "DON'T PANIC"… :rocket:
 [starship]: https://starship.rs/
 [powerline]: https://powerline.readthedocs.io/en/latest/
 [nerdfonts]: https://www.nerdfonts.com
+[firacode]: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip
+[hack]: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/Hack.zip
+[victor]: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/VictorMono.zip
+
 [cmd]: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
 [elvish]: https://elv.sh
 [fish]: https://fishshell.com
