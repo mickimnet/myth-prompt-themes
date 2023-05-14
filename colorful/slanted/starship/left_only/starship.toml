@@ -1,5 +1,5 @@
 # M.y.t.h. Colorful Slanted (left only) config for Starship
-# Copyright (c) 2020-2023 by Mick Hohamnn (@mickimnet), last changed: 2023-05-14 16:17
+# Copyright (c) 2020-2023 by Mick Hohamnn (@mickimnet), last changed: 2023-05-14 18:08
 # Note: comments for symbols refer to the class name of Nerd Fonts
 # Starship version support: 1.14.2
 "$schema" = 'https://starship.rs/config-schema.json'
