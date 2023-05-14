@@ -1,9 +1,3 @@
----
-description: 
-type: 
-created: 2021-01-25
-modified: 2023-05-14
----
 # M.y.t.h.: prompt themes
 
 > "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][bookquote])
