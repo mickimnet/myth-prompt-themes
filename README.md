@@ -1,3 +1,9 @@
+---
+description: 
+type: 
+created: 2021-01-25
+modified: 2023-05-14
+---
 # M.y.t.h.: prompt themes
 
 > "**Don't pick up hitchhikers!"** <_D. Adams_> (Excerpt from [Myth-ion Improbable][bookquote])
@@ -25,6 +31,8 @@ Currently, the modules, which are enabled, are based on my personal preferences 
 
 If you don't like the symbols, I've included alternative symbols in the `starship.toml`. If you would like to have a newline before the prompt, use `starship config add_newline true`.
 
+The _Twoliner_ variant contains a second configuration for the `format` and `right_format` section, where the `[directory]`, `[battery]` and `[time]` modules are on the input line. To change it, check the `starship.toml` file.
+
 ### Preview
 
 The preview images are made on _macOS_ with [iTerm](iterm), and a patched [Input][input] font (to include _Nerd Font_ support and to add ligatures).
@@ -39,7 +47,36 @@ The following modules are **shown in the preview** and are **disabled** in the `
 - **Shell** (seen in the _go_ directory)**:** my default shell is the [Fish Shell][fish], therefore only other shells are shown. See the `[shell]` section in `starship.toml` for further information and to change or adapt to your liking.
 - **Command duration** (seen in the _python-project_ directory): to enable use `starship config cmd_duration.disabled false`.
 
-#### M.y.t.h. Colorful Pointed:
+#### M.y.t.h. Orange
+
+##### Pointed:
+
+with right prompt support (general):
+![M.y.t.h. Orange Pointed with right prompt support](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-pointed-general-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
+without right prompt support (left_only):
+![M.y.t.h. Orange Pointed left side only](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-pointed-left_only-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
+##### Slanted:
+
+with right prompt support (general):
+![M.y.t.h. Orange Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-slanted-general-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
+without right prompt support (left_only):
+![M.y.t.h. Orange Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-slanted-left_only-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
+##### Twoliner:
+
+![M.y.t.h. Orange Twoliner:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-twoliner-general-starship.png)
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
+#### M.y.t.h. Colorful
+
+##### Pointed:
 
 with right prompt support (general):
 ![M.y.t.h. Colorful Pointed with right prompt support](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-pointed-general-starship.png)
@@ -49,7 +86,7 @@ without right prompt support (left_only):
 ![M.y.t.h. Colorful Pointed left side only](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-pointed-left_only-starship.png)
 _Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
-#### M.y.t.h. Colorful Slanted:
+##### Slanted:
 
 with right prompt support (general):
 ![M.y.t.h. Colorful Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-slanted-general-starship.png)
@@ -60,6 +97,14 @@ without right prompt support (left_only):
 _Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 ## Update history
+
+### Version 1.1: 2023-05-14
+
+- added the _Orange_ variant with a lot less colors. All colors are now based on the type of module: Cloud (Dark blue), Container (Blue), Toolchain (Orange), Package (Grey), Git (Greens), etc.
+- added a _Twoline_ variant, which uses two lines for the prompt as _Starship_ does by default
+- the order of the modules, is now based on the placement in the format section — the _Colorful_ variant still has it ordered alphabetically
+- fixed errors in the _Colorful • Slanted_ configuration files
+- added the name of the variant as a comment in the configuration file
 
 ### Version 1.0: 2023-05-01
 
@@ -78,12 +123,11 @@ _Remark:_ the newline in between the prompts is just used for the preview. The c
 ## Upcoming
 
 - light color scheme
-- new variations (with less colors)
 - download link for the config files
 
 ## Thanks
 
-Very big thank you goes out to late [@elseym][siwa] for his invaluable support and feedback all the time. :black_heart: And thank you [@divb][divb] for always making time to listen to me and for your on point feedback. :yellow_heart:
+Very big thank you goes out to late [@elseym][siwa] for his invaluable support and feedback all the time. :black_heart: And thank you [@divb][divb] for always making time to listen to me and for your on-point feedback. :yellow_heart:
 
 _Always have fun:sunny: in what you're doing and_ "DON'T PANIC"… :rocket:
 
