@@ -41,32 +41,29 @@ The following modules are **shown in the preview** and are **disabled** in the `
 - **Shell** (seen in the _go_ directory)**:** my default shell is the [Fish Shell][fish], therefore only other shells are shown. See the `[shell]` section in `starship.toml` for further information and to change or adapt to your liking.
 - **Command duration** (seen in the _python-project_ directory): to enable use `starship config cmd_duration.disabled false`.
 
+_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+
 #### M.y.t.h. Orange
 
 ##### Pointed:
 
 with right prompt support (general):
 ![M.y.t.h. Orange Pointed with right prompt support](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-pointed-general-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 without right prompt support (left_only):
 ![M.y.t.h. Orange Pointed left side only](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-pointed-left_only-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 ##### Slanted:
 
 with right prompt support (general):
 ![M.y.t.h. Orange Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-slanted-general-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 without right prompt support (left_only):
 ![M.y.t.h. Orange Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-slanted-left_only-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 ##### Twoliner:
 
-![M.y.t.h. Orange Twoliner:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-twoliner-general-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
+![M.y.t.h. Orange Twoliner:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/orange-twoliner-starship.png)
 
 #### M.y.t.h. Colorful
 
@@ -74,21 +71,17 @@ _Remark:_ the newline in between the prompts is just used for the preview. The c
 
 with right prompt support (general):
 ![M.y.t.h. Colorful Pointed with right prompt support](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-pointed-general-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 without right prompt support (left_only):
 ![M.y.t.h. Colorful Pointed left side only](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-pointed-left_only-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 ##### Slanted:
 
 with right prompt support (general):
 ![M.y.t.h. Colorful Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-slanted-general-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 without right prompt support (left_only):
 ![M.y.t.h. Colorful Slanted:](https://github.com/mickimnet/myth-packages/blob/master/screenshots/myth-prompt-themes/colorful-slanted-left_only-starship.png)
-_Remark:_ the newline in between the prompts is just used for the preview. The configuration itself doesn't use newlines (which can be enabled).
 
 ## Update history
 
